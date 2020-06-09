@@ -19,3 +19,7 @@
     letter-spacing: 2px;
     color: var(--main-accent-color);
 }
+
+.header__navLink {
+    text-decoration: none;
+}

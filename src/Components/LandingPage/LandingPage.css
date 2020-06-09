@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import '../App/App.css';
 
 .landingPage {
     width: 100%;
@@ -18,16 +19,16 @@
 }
 
 .landingPage__learnMorebutton {
-    margin-top: 8vh;
+    margin-top: 3vh;
     font-size: 0.75em;
-    border: 2px solid #49c0c8;
-    color: #49c0c8;
+    border: 2px solid var(--main-accent-color);
+    color: var(--main-accent-color);
     background-color: #FFF;
 }
 
 .landingPage__learnMorebutton:hover {
     color: white;
-    background-color: #49c0c8;
+    background-color: var(--main-accent-color);
 }
 
 .landingPage__description {
