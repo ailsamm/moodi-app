@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import LogInPage from '../LogInPage/LogInPage';
 import ErrorPage from '../ErrorPage/ErrorPage';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import SignUpPage from '../SignUpPage/SignUpPage';
 import './MainContentRouter.css'
 export default class MainContentRouter extends Component {
 
@@ -13,9 +15,21 @@ export default class MainContentRouter extends Component {
                 <Switch>
                     <Route 
                         exact 
-                        key='/'
+                        key='landing'
                         path='/' 
                         component={LandingPage}
+                    />
+                    <Route 
+                        exact 
+                        key='login'
+                        path='/login' 
+                        component={LogInPage}
+                    />
+                    <Route 
+                        exact 
+                        key='signup'
+                        path='/signup' 
+                        component={SignUpPage}
                     />
                     <Route 
                         exact 

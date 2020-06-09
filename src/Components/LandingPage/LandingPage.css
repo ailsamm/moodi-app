@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-@import '../App/App.css';
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .landingPage {
     width: 100%;
@@ -12,12 +11,10 @@
 }
 
 .landingPage__title {
-    font-family: 'Righteous', cursive;
+    font-family: 'Pacifico', cursive;
     letter-spacing: 2px;
     line-height: 1;
     font-size: 1.5em;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .landingPage__learnMorebutton {
@@ -35,30 +32,4 @@
 
 .landingPage__description {
     margin: 0 2vw;
-}
-
-@media only screen and (min-width: 450px) {
-    .landingPage__title {
-        font-size: 1.5em;
-        letter-spacing: 10px;
-    }
-}
-
-@media only screen and (min-width: 600px) {
-    .landingPage__title {
-        font-size: 2.5em;
-        letter-spacing: 20px;
-    }
-}
-
-@media only screen and (min-width: 850px) {
-    .landingPage__title {
-        font-size: 3.5em;
-    }
-}
-
-@media only screen and (min-width: 800px) {
-    .landingPage {
-        font-size: 2em;
-    }
 }

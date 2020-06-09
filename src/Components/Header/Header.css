@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import '../App/App.css';
 
 .header {
     padding: 0.5vh 2vw;
@@ -16,5 +17,5 @@
     font-size: 3em;
     font-family: "Pacifico", sans-serif;
     letter-spacing: 2px;
-    color: #5fc4ae;
+    color: var(--main-accent-color);
 }

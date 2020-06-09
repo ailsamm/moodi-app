@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
+import MainContentRouter from '../MainContentRouter/MainContentRouter';
 import './App.css';
 
 export default class App extends Component {
@@ -7,6 +8,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <Header/>
+        <MainContentRouter/>
       </div>
     );
   }
