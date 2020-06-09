@@ -1,0 +1,6 @@
+.mainContent {
+    margin-top: 15vh;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
