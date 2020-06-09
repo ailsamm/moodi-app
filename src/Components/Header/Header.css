@@ -12,6 +12,20 @@
     font-size: 0.8em;
 }
 
+.header__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-end;
+    margin-left: auto;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.header__signUpButton, .header__logInButton {
+    text-align: center;
+    margin: 0.5vh 0.5vw;
+}
+
 .header__moodi {
     margin: 1vh 1vw;
     font-size: 3em;
@@ -22,4 +36,10 @@
 
 .header__navLink {
     text-decoration: none;
+}
+
+@media only screen and (min-width: 400px) {
+    .header__buttons {
+        flex-direction: row;
+    }
 }
