@@ -4,7 +4,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LogInPage from '../LogInPage/LogInPage';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import Overview from '../Overview/Overview';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+//import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import './MainContentRouter.css'
 export default class MainContentRouter extends Component {
