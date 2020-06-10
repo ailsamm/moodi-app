@@ -1,0 +1,7 @@
+.calendar {
+    margin: 2vh 4vw;
+}
+
+.calendar span.rbc-button-group {
+    display: none;
+}

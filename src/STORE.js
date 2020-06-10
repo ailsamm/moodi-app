@@ -6,9 +6,15 @@ const STORE = {
         {id: 2, first_name: 'Bobbi', last_name: 'Brown', email: 'bbb@gmail.com', password: 'bbb'}
     ],
     moods: [
-        {id: 1, user_id: 1, mood: 'happy', date: moment("06-01-2020", 'MM-DD-YYYY')},
-        {id: 2, user_id: 1, mood: 'happy', date: moment("06-02-2020", 'MM-DD-YYYY')},
-        {id: 3, user_id: 1, mood: 'happy', date: moment("06-03-2020", 'MM-DD-YYYY')}
+        {id: 1, user_id: 1, mood: 'happy', start: moment("06-01-2020", 'MM-DD-YYYY'), end: moment("06-01-2020", 'MM-DD-YYYY'), title: "\xA0"},
+        {id: 2, user_id: 1, mood: 'sad', start: moment("06-05-2020", 'MM-DD-YYYY'), end: moment("06-05-2020", 'MM-DD-YYYY'), title: "\xA0"},
+        {id: 3, user_id: 1, mood: 'calm', start: moment("06-10-2020", 'MM-DD-YYYY'), end: moment("06-10-2020", 'MM-DD-YYYY'), title: "\xA0"},
+        {id: 3, user_id: 1, mood: 'calm', start: moment("06-11-2020", 'MM-DD-YYYY'), end: moment("06-11-2020", 'MM-DD-YYYY'), title: "\xA0"},
+        {id: 3, user_id: 1, mood: 'calm', start: moment("06-12-2020", 'MM-DD-YYYY'), end: moment("06-12-2020", 'MM-DD-YYYY'), title: "\xA0"},
+        {id: 4, user_id: 1, mood: 'angry', start: moment("06-14-2020", 'MM-DD-YYYY'), end: moment("06-14-2020", 'MM-DD-YYYY'), title: "\xA0"},
+        {id: 4, user_id: 1, mood: 'angry', start: moment("06-15-2020", 'MM-DD-YYYY'), end: moment("06-15-2020", 'MM-DD-YYYY'), title: "\xA0"},
+        {id: 5, user_id: 1, mood: 'anxious', start: moment("06-20-2020", 'MM-DD-YYYY'), end: moment("06-20-2020", 'MM-DD-YYYY'), title: "\xA0"},
+        {id: 6, user_id: 2, mood: 'happy', start: moment().toDate(), end: moment().toDate(), title: "\xA0"},
     ]
 }
 
