@@ -11,7 +11,7 @@ export default class App extends Component {
         this.state = {
             loggedInUser: 1,
             users: [],
-            moods: []
+            moodLogs: []
         }
     }
 
@@ -19,15 +19,20 @@ export default class App extends Component {
         this.setState({
             ...this.state,
             users: STORE.users,
-            moods: STORE.moods
+            moodLogs: STORE.mood_logs
         })
+    }
+
+    addMoodLog = () => {
+        console.log("saying hi in mood log!");
     }
 
     render(){
         const contextValue = {
             loggedInUser: this.state.loggedInUser,
             users: this.state.users,
-            moods: this.state.moods
+            moodLogs: this.state.moodLogs,
+            onAddMoodLog: this.addMoodLog
         }
 
         return (

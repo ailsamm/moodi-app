@@ -14,19 +14,14 @@ export default class CalendarComp extends Component {
     constructor(props){
         super(props);
         this.state = {
-            events: [
-              {
-                start: moment().toDate(),
-                end: moment().toDate(),
-                title: "a"
-              }
-            ]
+            moods: []
         }
     }
 
-    getEvents(moods){
-        const userMoods = moods.filter(mood => mood.user_id === this.context.loggedInUser);
-        return userMoods;
+    getEvents(){
+        const moodLogs = this.context.moodLogs || [];
+        const userMoodLogs = moodLogs.filter(mood => mood.user_id === this.context.loggedInUser);
+        return userMoodLogs;
     }
 
     eventPropGenerator(event){
@@ -77,7 +72,7 @@ export default class CalendarComp extends Component {
                         defaultDate={new Date()}
                         defaultView="month"
                         views={['month']}
-                        events={this.getEvents(context.moods)}
+                        events={this.getEvents()}
                         style={{ height: "100vh" }}
                         eventPropGetter={event => this.eventPropGenerator(event)}
                     />
