@@ -66,7 +66,7 @@ export default class AddMoodLog extends Component {
 
     submitLog = (e) => {
         e.preventDefault();
-        
+
         if (this.state.selectedMood){
             const activities = Object.entries(this.state.activities).reduce((acc, [key, value]) => {
                 if (value) return [...acc, key];
@@ -76,12 +76,16 @@ export default class AddMoodLog extends Component {
             const newLog = {
                 id: 99, // TO DO: make dynamic
                 user_id: this.context.loggedInUser,
-                start: this.state.date,
-                end: this.state.date,
+                mood: this.state.selectedMood,
+                start: this.state.date.toDate(),
+                end: this.state.date.toDate(),
                 title: "\xA0",
                 notes: this.state.notes,
                 activities
             }
+
+            this.context.onAddMoodLog(newLog);
+            this.props.history.push("/overview");
         }
         else {
             console.log("please select a mood");
@@ -90,7 +94,7 @@ export default class AddMoodLog extends Component {
 
     renderActivities() {
         const activityProps = [
-            {name: "Exercise", valueName:"exercise", icon: faRunning},
+            {name: "Exercising", valueName:"exercise", icon: faRunning},
             {name: "Family", valueName:"family", icon: faUsers},
             {name: "Friends", valueName:"friends", icon: faPeopleArrows},
             {name: "Healthy eating", valueName:"eat", icon: faUtensils},
@@ -100,11 +104,11 @@ export default class AddMoodLog extends Component {
             {name: "Reading", valueName:"read", icon: faBook},
             {name: "Cleaning", valueName:"clean", icon: faHandSparkles},
             {name: "TV / Movies", valueName:"movies", icon: faTv},
-            {name: "Laughed", valueName:"laugh", icon: faGrinSquintTears},
+            {name: "Laughing", valueName:"laugh", icon: faGrinSquintTears},
             {name: "Music", valueName:"music", icon: faMusic},
             {name: "Bath", valueName:"bath", icon: faBath},
             {name: "Sun", valueName:"sun", icon: faSun},
-            {name: "Relax", valueName:"relax", icon: faBalanceScale}
+            {name: "Relaxing", valueName:"relax", icon: faBalanceScale}
         ];
 
         return (

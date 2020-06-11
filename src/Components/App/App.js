@@ -23,8 +23,9 @@ export default class App extends Component {
         })
     }
 
-    addMoodLog = () => {
-        console.log("saying hi in mood log!");
+    addMoodLog = (newLog) => {
+        const moodLogs = [...this.state.moodLogs, newLog]
+        this.setState({ moodLogs })
     }
 
     render(){
