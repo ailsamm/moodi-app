@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import AddMoodLog from '../AddMoodLog/AddMoodLog';
 import LandingPage from '../LandingPage/LandingPage';
 import LogInPage from '../LogInPage/LogInPage';
 import ErrorPage from '../ErrorPage/ErrorPage';
@@ -37,6 +38,12 @@ export default class MainContentRouter extends Component {
                         key='overview'
                         path='/overview' 
                         component={Overview}
+                    />
+                    <Route 
+                        exact 
+                        key='addmood'
+                        path='/add' 
+                        component={AddMoodLog}
                     />
                     <Route 
                         exact 

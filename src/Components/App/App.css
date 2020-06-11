@@ -2,8 +2,14 @@
 
 :root {
     --main-accent-color: #5fc4ae;
-    --button-hover-color: #6fc3c9;
+    --button-hover-color: #4db09a;
     --main-text-color: #3a3a3a;
+    --mood-happy: #e9d66bb2;
+    --mood-sad: #82cbe1b2;
+    --mood-angry: #e17c7c9c;
+    --mood-anxious: #eeb24cb2;
+    --mood-calm: #5fc4aebd;
+    --mood-tired: #8e5fbab4;
 }
 
 * {

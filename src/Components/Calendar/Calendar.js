@@ -51,6 +51,10 @@ export default class CalendarComp extends Component {
                 newStyle.backgroundColor = "#e17c7c9c"; // red
                 break;
 
+            case "tired":
+                newStyle.backgroundColor = "#8e5fbab4"; // purple
+            break;
+
             default: 
                 newStyle.backgroundColor = "gray";
         }
