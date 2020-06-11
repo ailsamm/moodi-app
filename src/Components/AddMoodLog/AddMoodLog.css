@@ -1,7 +1,7 @@
 @import '../App/App.css';
 
 .addMoodLog {
-    margin: 2vh 3vw;
+    margin: 0 3vw 2vh 3vw;
     color: var(--main-text-color);
     display: flex;
     flex-direction: column;
@@ -42,8 +42,8 @@
     margin: 2vh auto;
 }
 
-.addMoodLog h2 {
-    margin: 0;
+.addMoodLog h3 {
+    margin: 0.5vh 0;
 }
 
 .addMoodLog h1 {
@@ -52,19 +52,49 @@
 
 .addMoodLog__section {
     margin-top: 3vh;
+    background-color: #eeeeeeb2;
+    border-radius: 10px;
+    padding: 1vh 1vw;
 }
 
 .addMoodLog__section__details {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .addMoodLog textarea {
-    width: 120vw;
+    width: 65vw;
+    height: 10vh;
+    margin-top: 2vh;
+}
+
+.addMoodLog__sleepDateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addMoodLog__datePickerContainer > div {
+    margin: 4vh 0;
+}
+
+.addMoodLog__datePickerContainer > svg {
+    color: var(--main-accent-color);
+    font-size: 1.5em;
+}
+
+.addMoodLog__datePickerContainer {
+    display: inline-block;
+}
+
+.addMoodLog .MuiSlider-root {
+    color: var(--main-accent-color);
 }
 
 .addMoodLog__moodButton, .addMoodLog__activity {
-    background-color: #f4f4f4;
-    border: 1px solid #f0f0f0;
+    background-color: #ffffff;
+    border: none;
     border-radius: 5px;
     padding: 1vh 0.5vw;
     margin: 1vh 2vw;

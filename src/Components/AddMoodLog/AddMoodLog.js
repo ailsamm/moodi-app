@@ -1,32 +1,42 @@
 import React, { Component } from 'react';
 import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSadTear, faAngry, faLaughBeam, faSun, faGrimace, faBath, faSmile, faTired, faRunning, faMusic, faUsers, faUtensils, faGrinSquintTears, faBook, faLeaf, faTint } from '@fortawesome/free-solid-svg-icons';
-import TextField from '@material-ui/core/TextField';
+import { faSadTear, faAngry, faLaughBeam, faTv, faCalendarAlt, faBalanceScale, faSun, faHandSparkles, faHeart, faGrimace, faPeopleArrows, faBath, faSmile, faTired, faRunning, faMusic, faUsers, faUtensils, faGrinSquintTears, faBook, faLeaf, faTint } from '@fortawesome/free-solid-svg-icons';
+import { TextField, Slider } from '@material-ui/core';
 import { SingleDatePicker } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
+import MoodiContext from '../../MoodiContext';
 import moment from 'moment';
 import './AddMoodLog.css';
 
 export default class AddMoodLog extends Component {
 
+    static contextType = MoodiContext;
+
     constructor(props){
         super(props);
         this.state = {
             notes: "",
+            sleepHours: 8,
             focused: false,
-            date: null,
+            date: moment(),
             selectedMood: null,
             activities: {
                 exercise: false,
-                socialize: false,
-                eaten: false,
+                family: false,
+                friends: false,
+                eat: false,
+                date: false,
                 water: false,
                 outdoors: false,
                 read: false,
+                clean: false,
+                movies: false,
                 laugh: false,
                 music: false,
                 bath: false,
-                sun: false
+                sun: false,
+                relax: false
             }
         }
     }
@@ -35,10 +45,14 @@ export default class AddMoodLog extends Component {
         this.setState({notes})
     }
 
-    updateSelectedMood = (e) => {
-        this.setState({
-            selectedMood: e
-        })
+    updateSleepHours = (e, sleepHours) => {
+        this.setState({ sleepHours })
+    }
+
+    updateSelectedMood = (mood) => {
+        // control toggling of mood options
+        const selectedMood = this.state.selectedMood === mood ? null : mood;
+        this.setState({ selectedMood })
     }
 
     updateActivities = (e) => {
@@ -50,22 +64,47 @@ export default class AddMoodLog extends Component {
         })
     }
 
-    submitLog = () => {
-        console.log("hello");
+    submitLog = (e) => {
+        e.preventDefault();
+        
+        if (this.state.selectedMood){
+            const activities = Object.entries(this.state.activities).reduce((acc, [key, value]) => {
+                if (value) return [...acc, key];
+                return acc;
+            }, []);
+
+            const newLog = {
+                id: 99, // TO DO: make dynamic
+                user_id: this.context.loggedInUser,
+                start: this.state.date,
+                end: this.state.date,
+                title: "\xA0",
+                notes: this.state.notes,
+                activities
+            }
+        }
+        else {
+            console.log("please select a mood");
+        }
     }
 
     renderActivities() {
         const activityProps = [
-            {name: "Exercised", valueName:"exercise", icon: faRunning},
-            {name: "Socialized", valueName:"socialize", icon: faUsers},
-            {name: "Eaten", valueName:"eaten", icon: faUtensils},
-            {name: "Drunk water", valueName:"water", icon: faTint},
-            {name: "Been outdoors", valueName:"outdoors", icon: faLeaf},
-            {name: "Read", valueName:"read", icon: faBook},
+            {name: "Exercise", valueName:"exercise", icon: faRunning},
+            {name: "Family", valueName:"family", icon: faUsers},
+            {name: "Friends", valueName:"friends", icon: faPeopleArrows},
+            {name: "Healthy eating", valueName:"eat", icon: faUtensils},
+            {name: "Date", valueName:"date", icon: faHeart},
+            {name: "Drink water", valueName:"water", icon: faTint},
+            {name: "Outdoors", valueName:"outdoors", icon: faLeaf},
+            {name: "Reading", valueName:"read", icon: faBook},
+            {name: "Cleaning", valueName:"clean", icon: faHandSparkles},
+            {name: "TV / Movies", valueName:"movies", icon: faTv},
             {name: "Laughed", valueName:"laugh", icon: faGrinSquintTears},
-            {name: "Listened to music", valueName:"music", icon: faMusic},
-            {name: "Taken a bath", valueName:"bath", icon: faBath},
-            {name: "Soaked in the sun", valueName:"sun", icon: faSun},
+            {name: "Music", valueName:"music", icon: faMusic},
+            {name: "Bath", valueName:"bath", icon: faBath},
+            {name: "Sun", valueName:"sun", icon: faSun},
+            {name: "Relax", valueName:"relax", icon: faBalanceScale}
         ];
 
         return (
@@ -75,6 +114,7 @@ export default class AddMoodLog extends Component {
                     return (
                         <button onClick={e => this.updateActivities(e.target.value)} 
                             key={activity.name.toLowerCase()}
+                            type="button"
                             className={`addMoodLog__activity ${className}`}
                             value={activity.valueName}>
                                 <FontAwesomeIcon icon={activity.icon}/>
@@ -103,6 +143,7 @@ export default class AddMoodLog extends Component {
                     return (
                         <button onClick={e => this.updateSelectedMood(e.target.value)} 
                             key={mood.name.toLowerCase()}
+                            type="button"
                             className={`addMoodLog__moodButton ${className}`}
                             value={mood.name.toLowerCase()}>
                                 <FontAwesomeIcon icon={mood.icon}/>
@@ -116,8 +157,7 @@ export default class AddMoodLog extends Component {
 
     render() {
         return (
-            <div className="addMoodLog">
-                <h1>Log Mood</h1>
+            <form className="addMoodLog" onSubmit={e => this.submitLog(e)} >
                 <div className="addMoodLog__section">
                     <h2>How are you feeling?</h2>
                     {this.renderButtons()}
@@ -127,24 +167,46 @@ export default class AddMoodLog extends Component {
                     {this.renderActivities()}
                 </div>
                 <div className="addMoodLog__section addMoodLog__section__details">
-                    <TextField
-                        id="filled-multiline-static"
-                        label="Notes"
-                        multiline
-                        rows={4}
-                        variant="filled"
-                        onChange={e => this.updateNotes(e.target.value)}
-                    />
-                    <SingleDatePicker
-                        date={null} 
-                        onDateChange={date => this.setState({ date })}
-                        focused={this.state.focused}
-                        onFocusChange={({ focused }) => this.setState({ focused })}
-                        id="addMoodLog__datePicker"
-                    />
+                    <div>
+                        <h3>Add some notes here:</h3>
+                        <TextField
+                            id="filled-multiline-static"
+                            label="Dear diary..."
+                            multiline
+                            rows={4}
+                            variant="filled"
+                            onChange={e => this.updateNotes(e.target.value)}
+                        />
+                    </div>
+                    <div className="addMoodLog__sleepDateContainer">
+                        <div className="addMoodLog__sleepHoursContainer">
+                            <h3>Hours of sleep:</h3>
+                            <Slider
+                                defaultValue={8}
+                                getAriaValueText={this.value}
+                                onChange={this.updateSleepHours}
+                                aria-labelledby="sleep hours"
+                                step={1}
+                                marks
+                                min={0}
+                                max={14}
+                                valueLabelDisplay="auto"
+                            />
+                        </div>
+                        <div className="addMoodLog__datePickerContainer">
+                            <FontAwesomeIcon icon={faCalendarAlt}/>&nbsp;&nbsp;
+                            <SingleDatePicker
+                                date={moment()} 
+                                onDateChange={date => this.setState({ date })}
+                                focused={this.state.focused}
+                                onFocusChange={({ focused }) => this.setState({ focused })}
+                                id="addMoodLog__datePicker"
+                            />
+                        </div>
+                    </div>
                 </div>
-                <button type="button" onClick={this.submitLog()} className="button addMoodLog__saveButton">save</button>
-            </div>
+                <button type="submit" className="button addMoodLog__saveButton">save</button>
+            </form>
         )
     }
 }
