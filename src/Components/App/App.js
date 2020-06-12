@@ -9,7 +9,7 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loggedInUser: null,
+            loggedInUser: 1,
             users: [],
             moodLogs: []
         }

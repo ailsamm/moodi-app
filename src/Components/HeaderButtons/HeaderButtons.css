@@ -15,6 +15,7 @@
     color: var(--main-text-color);
     font-weight: 500;
     margin: 0 1vw;
+    padding-bottom: 0.5vh;
 }
 
 .headerButtons > a:hover, .headerButtons > a.active {
@@ -22,7 +23,7 @@
 }
 
 .headerButtons > a.active {
-    text-decoration: underline;
+    border-bottom: 2px solid var(--main-accent-color);
 }
 
 @media only screen and (min-width: 400px) {

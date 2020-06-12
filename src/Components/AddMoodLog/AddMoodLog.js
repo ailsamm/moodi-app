@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { TextField, Slider } from '@material-ui/core';
 import { SingleDatePicker } from 'react-dates';
 import { getIcon } from '../../Helper';
@@ -192,7 +190,7 @@ export default class AddMoodLog extends Component {
                             />
                         </div>
                         <div className="addMoodLog__datePickerContainer">
-                            <FontAwesomeIcon icon={faCalendarAlt}/>&nbsp;&nbsp;
+                            {getIcon("calendar")}&nbsp;&nbsp;
                             <SingleDatePicker
                                 date={moment()} 
                                 onDateChange={date => this.setState({ date })}

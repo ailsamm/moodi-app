@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import Calendar from '../Calendar/Calendar';
+import { getIcon } from '../../Helper';
 import './Journal.css';
 
 
-export default class Overview extends Component {
+export default class Journal extends Component {
     render() {
         return (
             <div className="journal">
                 <div className="journal__topBar">
-                    <NavLink to="/add" className="button">
-                        <FontAwesomeIcon icon={faPlusCircle}/> new
-                    </NavLink>
+                    { getIcon("info")}
                     <div className="journal_tipOfTheDay">
                         <p>
                             <span className="journal_tipOfTheDay__intro bold-font">tip of the day: </span>

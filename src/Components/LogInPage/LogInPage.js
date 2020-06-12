@@ -38,7 +38,7 @@ export default class LogInPage extends Component {
             if (user){
                 if (user.password === this.state.password.value){
                     context.onLogInUser(user);
-                    this.props.history.push("/overview");
+                    this.props.history.push("/dashboard");
                     return;
                 }
                 // if password doesn't match email

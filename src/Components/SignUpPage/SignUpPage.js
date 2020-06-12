@@ -71,7 +71,7 @@ export default class SignUpPage extends Component {
                 team_id: 1
             };
             this.context.onSignUpUser(newUserLogIn, newUserInfo);
-            this.props.history.push("/overview");
+            this.props.history.push("/dashboard);
         }
         // ensures that the user has passed all validation measures
         else {

@@ -11,7 +11,7 @@ export default class HeaderButtons extends Component {
     getButtons = () => {
         if (this.context.loggedInUser) {
             return [
-                {name: "dashboard", icon: "dash", to: "/dashboard"},
+                {name: "dashboard", icon: "chart", to: "/dashboard"},
                 {name: "journal", icon: "calendar", to: "/journal"},
                 {name: "new log", icon: "pencil", to: "/add"}
             ]
@@ -34,7 +34,7 @@ export default class HeaderButtons extends Component {
                             id={button.name}
                             onClick={this.handleSelectButton}
                             key={button.name}>
-                                {getIcon(button.icon)}
+                                {getIcon(button.icon)}&nbsp;
                                 {button.name}
                         </NavLink>
                     )
