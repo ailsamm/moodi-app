@@ -2,10 +2,10 @@ import moment from 'moment';
 
 const STORE = {
     users: [
-        {id: 1, first_name: 'Ada', last_name: 'Lovelace', email: 'aaa@gmail.com', password: 'aaa', image: 'https://travel-quiz.s3-us-west-1.amazonaws.com/ada.jpg'},
-        {id: 2, first_name: 'Bobbi', last_name: 'Brown', email: 'bbb@gmail.com', password: 'bbb', image: 'https://travel-quiz.s3-us-west-1.amazonaws.com/bobbi.jpg'},
-        {id: 3, first_name: 'Cara', last_name: 'Comm', email: 'ccc@gmail.com', password: 'ccc', image: 'https://travel-quiz.s3-us-west-1.amazonaws.com/cara.jpg'},
-        {id: 4, first_name: 'Devin', last_name: 'Dale', email: 'ddd@gmail.com', password: 'ddd', image: 'https://travel-quiz.s3-us-west-1.amazonaws.com/devin.jpg'},
+        {id: 1, first_name: 'Ada', last_name: 'Lovelace', email: 'aaa@gmail.com', password: 'aaa', rank: "Mood Ninja"},
+        {id: 2, first_name: 'Bobbi', last_name: 'Brown', email: 'bbb@gmail.com', password: 'bbb', rank: "Mood Ninja"},
+        {id: 3, first_name: 'Cara', last_name: 'Comm', email: 'ccc@gmail.com', password: 'ccc', rank: "Mood Ninja"},
+        {id: 4, first_name: 'Devin', last_name: 'Dale', email: 'ddd@gmail.com', password: 'ddd', rank: "Mood Ninja"},
     ],
     mood_logs: [
         {id: 1, user_id: 1, mood: 'happy', start: moment("06-01-2020", 'MM-DD-YYYY'), end: moment("06-01-2020", 'MM-DD-YYYY'), title: "\xA0", activities: ['sun', 'bath'], sleepHours: 8, notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum elit.'},

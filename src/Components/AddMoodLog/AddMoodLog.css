@@ -37,6 +37,10 @@
     color: #6a6a6a;
 }
 
+.addMoodLog__activity:focus, .addMoodLog__moodButton:focus {
+    outline: 1px solid #708dcd;
+}
+
 .addMoodLog__saveButton {
     width: 30%;
     margin: 2vh auto;

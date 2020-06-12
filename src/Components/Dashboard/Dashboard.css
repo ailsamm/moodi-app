@@ -1,0 +1,25 @@
+.dashboard__row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+.dashboard__featureSection {
+    display: inline-block;
+    margin: 2vh 3vw;
+}
+
+.dashboard__featureContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard__featureContent > .dashboard__featureTitle {
+    font-size: 2em;
+}
+
+.dashboard__featureContent > svg {
+    font-size: 3em;
+}
