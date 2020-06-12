@@ -2,35 +2,35 @@ import { faSadTear, faBed, faTrashAlt, faAngry, faLaughBeam, faTv, faBalanceScal
 import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-export function getMoodColor(mood) {
+export function getMoodColors(mood) {
     let color;
     switch(mood) {
         case "happy":
-            color = "#e9d66bb2"; // yellow
+            color = {main: "#e9d66bb2", accent: "#e8dc97"}; // yellow
             break;
 
         case "sad":
-            color = "#82cbe1b2"; // blue
+            color = {main: "#82cbe1b2", accent: "#8dd7ed"}; // blue
             break;
 
         case "anxious":
-            color = "#eeb24cb2"; // orange
+            color = {main: "#eeb24cb2", accent: "#eec174"}; // orange
             break;
 
         case "calm":
-            color = "#5fc4aebd"; // green
+            color = {main: "#5fc4aebd", accent: "#68d7bf"}; // green
             break;
 
         case "angry":
-            color = "#e17c7c9c"; // red
+            color = {main: "#e17c7c9c", accent: "#d78c8c"}; // red
             break;
 
         case "tired":
-            color = "#8e5fbab4"; // purple
+            color = {main: "#8e5fbab4", accent: "#c69eeb"}; // purple
         break;
 
         default: 
-            color = "gray";
+            color = {main: "#bfbfbf", accent: "#bfbfbf"};
     }
     return color;
 }

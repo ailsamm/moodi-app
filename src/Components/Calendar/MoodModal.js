@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { getMoodColor, getIcon } from '../../Helper';
+import { getMoodColors, getIcon } from '../../Helper';
 import Modal from '@material-ui/core/Modal';
 
 function getModalStyle() {
@@ -27,13 +27,13 @@ export default function MoodModal(props) {
           outline: 0
         },
         title: {
-            color: getMoodColor(props.moodLog.mood),
+            color: getMoodColors(props.moodLog.mood).main,
             fontWeight: "500",
             display: "flex",
             justifyContent: "space-between"
         },
         container: {
-            color: getMoodColor(props.moodLog.mood),
+            color: getMoodColors(props.moodLog.mood).main,
             fontSize: "1.75em",
             display: 'flex',
             backgroundColor: "#f0f0f0",

@@ -86,7 +86,7 @@ export default class AddMoodLog extends Component {
             }
 
             this.context.onAddMoodLog(newLog);
-            this.props.history.push("/overview");
+            this.props.history.push("/journal");
         }
         else {
             console.log("please select a mood");
