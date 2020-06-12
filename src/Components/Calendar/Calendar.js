@@ -94,7 +94,7 @@ export default class CalendarComp extends Component {
                             style={{ height: "100vh" }}
                             eventPropGetter={event => this.eventPropGenerator(event)}
                         />
-                        <MoodModal open={this.state.isModalOpen} moodObj={this.state.selectedLog} handleClose={this.handleCloseModal}/>
+                        <MoodModal open={this.state.isModalOpen} moodLog={this.state.selectedLog} handleClose={this.handleCloseModal}/>
                     </div>)}
             </MoodiContext.Consumer>
         );

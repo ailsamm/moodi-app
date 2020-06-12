@@ -2,16 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { getMoodColor, getIcon } from '../../Helper';
 import Modal from '@material-ui/core/Modal';
-import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaughBeam } from '@fortawesome/free-solid-svg-icons';
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -33,11 +27,11 @@ export default function MoodModal(props) {
           outline: 0
         },
         title: {
-            color: getMoodColor(props.moodObj.mood),
+            color: getMoodColor(props.moodLog.mood),
             fontWeight: "500"
         },
         container: {
-            color: getMoodColor(props.moodObj.mood),
+            color: getMoodColor(props.moodLog.mood),
             fontSize: "1.75em",
             display: 'flex',
             backgroundColor: "#f0f0f0",
@@ -62,16 +56,16 @@ export default function MoodModal(props) {
 
     const body = (
         <div style={modalStyle} className={classes.main}>
-            <h2 id="simple-modal-title" className={classes.title}>{props.moodObj.start.format('MMMM Do YYYY')}</h2>
-            {props.moodObj.activities.length > 0 && <div className={`${classes.container} ${classes.activities}`}>{props.moodObj.activities.map(activity => (
+            <h2 id="simple-modal-title" className={classes.title}>{props.moodLog.start.format('MMMM Do YYYY')}</h2>
+            {props.moodLog.activities.length > 0 && <div className={`${classes.container} ${classes.activities}`}>{props.moodLog.activities.map(activity => (
                 getIcon(activity)
             ))}
             </div>}
             <div className={`${classes.container} ${classes.sleep}`}>
-                {getIcon("sleep")}<span className={classes.sleepHours}>&nbsp;{props.moodObj.sleepHours} hours</span>
+                {getIcon("sleep")}<span className={classes.sleepHours}>&nbsp;{props.moodLog.sleepHours} hours</span>
             </div>
             <p id="simple-modal-description">
-                {props.moodObj.notes}
+                {props.moodLog.notes}
             </p>
         </div>
     );
