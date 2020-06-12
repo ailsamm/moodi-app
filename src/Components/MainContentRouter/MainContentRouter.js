@@ -4,7 +4,7 @@ import AddMoodLog from '../AddMoodLog/AddMoodLog';
 import LandingPage from '../LandingPage/LandingPage';
 import LogInPage from '../LogInPage/LogInPage';
 import ErrorPage from '../ErrorPage/ErrorPage';
-import Overview from '../Overview/Overview';
+import Journal from '../Journal/Journal';
 //import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import './MainContentRouter.css'
@@ -35,9 +35,9 @@ export default class MainContentRouter extends Component {
                     />
                     <Route 
                         exact 
-                        key='overview'
-                        path='/overview' 
-                        component={Overview}
+                        key='journal'
+                        path='/journal' 
+                        component={Journal}
                     />
                     <Route 
                         exact 
