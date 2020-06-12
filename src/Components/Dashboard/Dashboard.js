@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MoodiContext from '../../MoodiContext';
-import { getIcon } from '../../Helper';
+import { Doughnut } from 'react-chartjs-2';
+import { getMoodColors, getIcon } from '../../Helper';
 import './Dashboard.css';
 
 export default class Dashboard extends Component {
@@ -11,7 +12,66 @@ export default class Dashboard extends Component {
         super(props);
         this.state={
             timespan: "month", //or week or all time
+            doughnutLabels: ['happy', 'sad', 'angry', 'anxious', 'calm', 'tired'],
         }
+    }
+
+    calculateChartDatasets(mood, logs) {
+        let tasks = logs.filter(log => log.mood === mood);
+        return tasks.length;
+    }
+
+    getChartDatasets(logs) {
+        const happyCount = this.calculateChartDatasets("happy", logs);
+        const sadCount = this.calculateChartDatasets("sad", logs);
+        const angryCount = this.calculateChartDatasets("angry", logs);
+        const anxiousCount = this.calculateChartDatasets("anxious", logs);
+        const calmCount = this.calculateChartDatasets("calm", logs);
+        const tiredCount = this.calculateChartDatasets("tired", logs);
+
+        const doughnutDataset = [
+            {
+                label: 'moods',
+                backgroundColor: [
+                    getMoodColors('happy').main, 
+                    getMoodColors('sad').main, 
+                    getMoodColors('angry').main, 
+                    getMoodColors('anxious').main, 
+                    getMoodColors('calm').main, 
+                    getMoodColors('tired').main, 
+                ],
+                borderWidth: 0.4,
+                borderColor: '#767676',
+                data: [happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount]
+            }
+        ];
+
+        return doughnutDataset;
+    }
+
+    createCharts(logs){
+        const dataset = this.getChartDatasets(logs);
+        return (
+            <div className="dashboard__charts">
+                <Doughnut
+                    data={{
+                        labels: this.state.doughnutLabels,
+                        datasets: dataset
+                    }}
+                    height={300}
+                    options={{
+                        title:{
+                        display:true,
+                        text:'Moods',
+                        fontSize:15
+                        },
+                        legend:{
+                        display:false,
+                        }
+                    }}
+                    />
+            </div>
+        );
     }
 
     getUserRank = () => {
@@ -59,6 +119,7 @@ export default class Dashboard extends Component {
                         )
                     })}
                 </div>
+                {this.createCharts(logs)}
             </div>
         )
     }
