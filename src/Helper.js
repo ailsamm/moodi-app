@@ -1,4 +1,4 @@
-import { faSadTear, faBed, faTrashAlt, faAngry, faLaughBeam, faTv, faBalanceScale, faSun, faHandSparkles, faHeart, faGrimace, faPeopleArrows, faBath, faSmile, faTired, faRunning, faMusic, faUsers, faUtensils, faGrinSquintTears, faBook, faLeaf, faTint } from '@fortawesome/free-solid-svg-icons';
+import { faSadTear, faBed, faUser, faPencilAlt, faTrashAlt, faAngry, faLaughBeam, faTv, faBalanceScale, faSun, faHandSparkles, faHeart, faGrimace, faPeopleArrows, faBath, faSmile, faTired, faRunning, faMusic, faUsers, faUtensils, faGrinSquintTears, faBook, faLeaf, faTint } from '@fortawesome/free-solid-svg-icons';
 import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
@@ -128,6 +128,14 @@ export function getIcon(name) {
 
         case "trash":
             iconName = faTrashAlt;
+        break;
+
+        case "pencil":
+            iconName = faPencilAlt;
+        break;
+
+        case "user":
+            iconName = faUser;
         break;
 
         default: 

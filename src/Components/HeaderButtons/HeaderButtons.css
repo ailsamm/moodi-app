@@ -1,0 +1,32 @@
+@import '../App/App.css';
+
+.headerButtons {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-end;
+    margin-left: auto;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    font-size: 1.5em;
+}
+
+.headerButtons > a {
+    text-decoration: none;
+    color: var(--main-text-color);
+    font-weight: 500;
+    margin: 0 1vw;
+}
+
+.headerButtons > a:hover, .headerButtons > a.active {
+    color: var(--main-accent-color);
+}
+
+.headerButtons > a.active {
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 400px) {
+    .headerButtons {
+        flex-direction: row;
+    }
+}

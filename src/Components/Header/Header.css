@@ -12,15 +12,6 @@
     font-size: 0.8em;
 }
 
-.header__buttons {
-    display: flex;
-    flex-direction: column;
-    justify-self: flex-end;
-    margin-left: auto;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-}
-
 .header__signUpButton, .header__logInButton {
     text-align: center;
 }
@@ -35,16 +26,4 @@
 
 .header__navLink {
     text-decoration: none;
-}
-
-.header__buttons > .MuiAvatar-root {
-    font-size: 2em;
-    width: 2.5em;
-    height: 2.5em;
-}
-
-@media only screen and (min-width: 400px) {
-    .header__buttons {
-        flex-direction: row;
-    }
 }
