@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import MoodiContext from '../../MoodiContext';
 import moment from 'moment';
 import MoodModal from './MoodModal';
-import { getMoodColor } from '../../Helper';
+import { getMoodColor, getIcon } from '../../Helper';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import './Calendar.css';
 
@@ -42,6 +42,7 @@ export default class CalendarComp extends Component {
     getEvents(){
         const moodLogs = this.context.moodLogs || [];
         const userMoodLogs = moodLogs.filter(mood => mood.user_id === this.context.loggedInUser);
+        userMoodLogs.forEach(log => log.title = getIcon(log.mood));
         return userMoodLogs;
     }
 

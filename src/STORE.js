@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { getIcon } from './Helper'
 
 const STORE = {
     users: [

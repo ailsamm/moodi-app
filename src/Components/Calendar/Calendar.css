@@ -5,3 +5,12 @@
 .rbc-toolbar > .rbc-toolbar-label {
     font-weight: 500;
 }
+
+.rbc-event-content {
+    display: flex;
+    justify-content: center;
+}
+
+.rbc-event-content > svg {
+    color: #FFF;
+}
