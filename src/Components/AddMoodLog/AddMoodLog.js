@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSadTear, faAngry, faLaughBeam, faTv, faCalendarAlt, faBalanceScale, faSun, faHandSparkles, faHeart, faGrimace, faPeopleArrows, faBath, faSmile, faTired, faRunning, faMusic, faUsers, faUtensils, faGrinSquintTears, faBook, faLeaf, faTint } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { TextField, Slider } from '@material-ui/core';
 import { SingleDatePicker } from 'react-dates';
+import { getIcon } from '../../Helper';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import MoodiContext from '../../MoodiContext';
@@ -51,6 +52,7 @@ export default class AddMoodLog extends Component {
 
     updateSelectedMood = (mood) => {
         // control toggling of mood options
+        console.log("hi!")
         const selectedMood = this.state.selectedMood === mood ? null : mood;
         this.setState({ selectedMood })
     }
@@ -94,21 +96,21 @@ export default class AddMoodLog extends Component {
 
     renderActivities() {
         const activityProps = [
-            {name: "Exercising", valueName:"exercise", icon: faRunning},
-            {name: "Family", valueName:"family", icon: faUsers},
-            {name: "Friends", valueName:"friends", icon: faPeopleArrows},
-            {name: "Healthy eating", valueName:"eat", icon: faUtensils},
-            {name: "Date", valueName:"date", icon: faHeart},
-            {name: "Drink water", valueName:"water", icon: faTint},
-            {name: "Outdoors", valueName:"outdoors", icon: faLeaf},
-            {name: "Reading", valueName:"read", icon: faBook},
-            {name: "Cleaning", valueName:"clean", icon: faHandSparkles},
-            {name: "TV / Movies", valueName:"movies", icon: faTv},
-            {name: "Laughing", valueName:"laugh", icon: faGrinSquintTears},
-            {name: "Music", valueName:"music", icon: faMusic},
-            {name: "Bath", valueName:"bath", icon: faBath},
-            {name: "Sun", valueName:"sun", icon: faSun},
-            {name: "Relaxing", valueName:"relax", icon: faBalanceScale}
+            {name: "Exercising", valueName:"exercise"},
+            {name: "Family", valueName:"family"},
+            {name: "Friends", valueName:"friends"},
+            {name: "Healthy eating", valueName:"eat"},
+            {name: "Date", valueName:"date"},
+            {name: "Drink water", valueName:"water"},
+            {name: "Outdoors", valueName:"outdoors"},
+            {name: "Reading", valueName:"read"},
+            {name: "Cleaning", valueName:"clean"},
+            {name: "TV / Movies", valueName:"movies"},
+            {name: "Laughing", valueName:"laugh"},
+            {name: "Music", valueName:"music"},
+            {name: "Bath", valueName:"bath"},
+            {name: "Sun", valueName:"sun"},
+            {name: "Relaxing", valueName:"relax"}
         ];
 
         return (
@@ -121,7 +123,7 @@ export default class AddMoodLog extends Component {
                             type="button"
                             className={`addMoodLog__activity ${className}`}
                             value={activity.valueName}>
-                                <FontAwesomeIcon icon={activity.icon}/>
+                                {getIcon(activity.valueName)}
                                 <p>{activity.name.toLowerCase()}</p>
                         </button> 
                     )
@@ -131,27 +133,20 @@ export default class AddMoodLog extends Component {
     }
 
     renderButtons() {
-        const moodProps = [
-            {name: "Happy", icon: faLaughBeam},
-            {name: "Sad", icon: faSadTear},
-            {name: "Angry", icon: faAngry},
-            {name: "Anxious", icon: faGrimace},
-            {name: "Calm", icon: faSmile},
-            {name: "Tired", icon: faTired},
-        ];
+        const moodNames = ["Happy", "Sad", "Angry", "Anxious", "Calm", "Tired"];
 
         return (
             <div className="addMoodLog__moodButtonContainer">
-                {moodProps.map(mood => {
-                    let className = mood.name.toLowerCase() === this.state.selectedMood ? `mood${mood.name} selectedMood`: `mood${mood.name}`;
+                {moodNames.map(mood => {
+                    let className = mood.toLowerCase() === this.state.selectedMood ? `mood${mood} selectedMood`: `mood${mood}`;
                     return (
                         <button onClick={e => this.updateSelectedMood(e.target.value)} 
-                            key={mood.name.toLowerCase()}
+                            key={mood.toLowerCase()}
                             type="button"
                             className={`addMoodLog__moodButton ${className}`}
-                            value={mood.name.toLowerCase()}>
-                                <FontAwesomeIcon icon={mood.icon}/>
-                                <p>{mood.name.toLowerCase()}</p>
+                            value={mood.toLowerCase()}>
+                                {getIcon(mood.toLowerCase())}
+                                <p className="bold-font">{mood.toLowerCase()}</p>
                         </button> 
                     )
                 })}

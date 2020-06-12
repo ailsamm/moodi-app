@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import MoodiContext from '../../MoodiContext';
 import moment from 'moment';
+import MoodModal from './MoodModal';
+import { getMoodColor } from '../../Helper';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import './Calendar.css';
 
@@ -14,8 +16,27 @@ export default class CalendarComp extends Component {
     constructor(props){
         super(props);
         this.state = {
-            moods: []
+            moods: [],
+            isModalOpen: false,
+            selectedLog: {
+                start: moment(),
+                end: moment(),
+                mood: "angry",
+                activities: [],
+                title: "\xA0",
+                id: 100,
+                user_id: 1,
+                sleepHours: 0,
+                notes: ""
+            }
         }
+    }
+
+    handleClick = (e) => {
+        this.setState({
+            selectedLog: e,
+            isModalOpen: true
+        })
     }
 
     getEvents(){
@@ -28,60 +49,54 @@ export default class CalendarComp extends Component {
         let newStyle = {
             color: 'black',
             borderRadius: "10px",
-            border: "none"
+            border: "none",
+            backgroundColor: getMoodColor(event.mood)
         };
-        switch(event.mood) {
-            case "happy":
-                newStyle.backgroundColor = "#e9d66bb2"; // yellow
-                break;
-    
-            case "sad":
-                newStyle.backgroundColor = "#82cbe1b2"; // blue
-                break;
-    
-            case "anxious":
-                newStyle.backgroundColor = "#eeb24cb2"; // orange
-                break;
-    
-            case "calm":
-                newStyle.backgroundColor = "#5fc4aebd"; // green
-                break;
-    
-            case "angry":
-                newStyle.backgroundColor = "#e17c7c9c"; // red
-                break;
-
-            case "tired":
-                newStyle.backgroundColor = "#8e5fbab4"; // purple
-            break;
-
-            default: 
-                newStyle.backgroundColor = "gray";
-        }
-        
     
         return {
             className: "",
-            style: newStyle
+            style: newStyle,
+            id: event.id
+        }
+    }
+
+    handleCloseModal = () => {
+        this.setState({ isModalOpen: false });
+    };
+
+    getMood(){
+        return {
+            start: moment(),
+            end: moment(),
+            mood: "angry",
+            activities: ['sun', 'eat', 'family', 'outdoors', 'date'],
+            title: "\xA0",
+            id: 100,
+            user_id: 1,
+            sleepHours: 8,
+            notes: "Today I went over to hang out with some friends. I wasn't feeling great in the morning, but after socialising a bit, I felt a lot better."
         }
     }
   
     render() {
-      return (
-          <MoodiContext.Consumer>
-              {context => (
-                <div className="calendar">
-                    <Calendar
-                        localizer={localizer}
-                        defaultDate={new Date()}
-                        defaultView="month"
-                        views={['month']}
-                        events={this.getEvents()}
-                        style={{ height: "100vh" }}
-                        eventPropGetter={event => this.eventPropGenerator(event)}
-                    />
-                </div>)}
-        </MoodiContext.Consumer>
-      );
+        return (
+            <MoodiContext.Consumer>
+                {context => (
+                    <div className="calendar">
+                        <Calendar
+                            popup={true}
+                            onSelectEvent={e => this.handleClick(e)}
+                            localizer={localizer}
+                            defaultDate={new Date()}
+                            defaultView="month"
+                            views={['month']}
+                            events={this.getEvents()}
+                            style={{ height: "100vh" }}
+                            eventPropGetter={event => this.eventPropGenerator(event)}
+                        />
+                        <MoodModal open={this.state.isModalOpen} moodObj={this.state.selectedLog} handleClose={this.handleCloseModal}/>
+                    </div>)}
+            </MoodiContext.Consumer>
+        );
     }
   }

@@ -105,6 +105,10 @@
     align-items: center;
 }
 
+.addMoodLog button > * {
+    pointer-events: none;
+}
+
 .addMoodLog__activity {
     font-size: 1em;
 }
