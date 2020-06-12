@@ -16,19 +16,20 @@ export default class Dashboard extends Component {
         }
     }
 
-    calculateChartDatasets(mood, logs) {
-        let tasks = logs.filter(log => log.mood === mood);
-        return tasks.length;
+    calculateChartDatasets(logs) {
+        let moods = {
+            happyCount: logs.filter(log => log.mood === 'happy').length,
+            sadCount: logs.filter(log => log.mood === 'sad').length,
+            angryCount: logs.filter(log => log.mood === 'angry').length,
+            anxiousCount: logs.filter(log => log.mood === 'anxious').length,
+            calmCount: logs.filter(log => log.mood === 'calm').length,
+            tiredCount: logs.filter(log => log.mood === 'tired').length
+        };
+        return moods;
     }
 
     getChartDatasets(logs) {
-        const happyCount = this.calculateChartDatasets("happy", logs);
-        const sadCount = this.calculateChartDatasets("sad", logs);
-        const angryCount = this.calculateChartDatasets("angry", logs);
-        const anxiousCount = this.calculateChartDatasets("anxious", logs);
-        const calmCount = this.calculateChartDatasets("calm", logs);
-        const tiredCount = this.calculateChartDatasets("tired", logs);
-
+        const { happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount } = this.calculateChartDatasets(logs);
         const doughnutDataset = [
             {
                 label: 'moods',
