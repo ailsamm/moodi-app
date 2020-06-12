@@ -52,7 +52,6 @@ export default class AddMoodLog extends Component {
 
     updateSelectedMood = (mood) => {
         // control toggling of mood options
-        console.log("hi!")
         const selectedMood = this.state.selectedMood === mood ? null : mood;
         this.setState({ selectedMood })
     }
