@@ -28,12 +28,18 @@ export default class App extends Component {
         this.setState({ moodLogs })
     }
 
+    deleteMoodLog = (logId) => {
+        const moodLogs = this.state.moodLogs.filter(moodLog => moodLog.id !== logId);
+        this.setState({ moodLogs})
+    }
+
     render(){
         const contextValue = {
             loggedInUser: this.state.loggedInUser,
             users: this.state.users,
             moodLogs: this.state.moodLogs,
-            onAddMoodLog: this.addMoodLog
+            onAddMoodLog: this.addMoodLog,
+            onDeleteMoodLog: this.deleteMoodLog
         }
 
         return (

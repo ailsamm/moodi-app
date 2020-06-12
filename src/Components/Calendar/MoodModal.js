@@ -28,7 +28,9 @@ export default function MoodModal(props) {
         },
         title: {
             color: getMoodColor(props.moodLog.mood),
-            fontWeight: "500"
+            fontWeight: "500",
+            display: "flex",
+            justifyContent: "space-between"
         },
         container: {
             color: getMoodColor(props.moodLog.mood),
@@ -48,6 +50,13 @@ export default function MoodModal(props) {
         },
         sleepHours: {
             fontSize: "0.8em"
+        },
+        trash: {
+            color: "#e17c7c9c",
+            border: "none",
+            backgroundColor: "inherit",
+            fontSize: "1em",
+            cursor: "pointer"
         }
     }));
 
@@ -56,7 +65,7 @@ export default function MoodModal(props) {
 
     const body = (
         <div style={modalStyle} className={classes.main}>
-            <h2 id="simple-modal-title" className={classes.title}>{props.moodLog.start.format('MMMM Do YYYY')}</h2>
+            <h2 id="simple-modal-title" className={classes.title}>{props.moodLog.start.format('MMMM Do YYYY')} <button onClick={props.handleDelete} className={classes.trash}>{getIcon("trash")}</button></h2>
             {props.moodLog.activities.length > 0 && <div className={`${classes.container} ${classes.activities}`}>{props.moodLog.activities.map(activity => (
                 getIcon(activity)
             ))}

@@ -39,6 +39,11 @@ export default class CalendarComp extends Component {
         })
     }
 
+    handleDelete = () => {
+        this.context.onDeleteMoodLog(this.state.selectedLog.id)
+        this.setState({ isModalOpen: false })
+    } 
+
     getEvents(){
         const moodLogs = this.context.moodLogs || [];
         const userMoodLogs = moodLogs.filter(mood => mood.user_id === this.context.loggedInUser);
@@ -95,7 +100,7 @@ export default class CalendarComp extends Component {
                             style={{ height: "100vh" }}
                             eventPropGetter={event => this.eventPropGenerator(event)}
                         />
-                        <MoodModal open={this.state.isModalOpen} moodLog={this.state.selectedLog} handleClose={this.handleCloseModal}/>
+                        <MoodModal open={this.state.isModalOpen} moodLog={this.state.selectedLog} handleDelete={this.handleDelete} handleClose={this.handleCloseModal}/>
                     </div>)}
             </MoodiContext.Consumer>
         );
