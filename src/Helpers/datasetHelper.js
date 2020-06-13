@@ -1,6 +1,7 @@
 import React from 'react';
 import { getMoodColors } from '../Helper';
 import { Doughnut, Line } from 'react-chartjs-2';
+import moment from 'moment';
 
 function calculateChartDatasets(logs) {
     let moods = {
@@ -14,37 +15,72 @@ function calculateChartDatasets(logs) {
     return moods;
 }
 
-function getChartDatasets(logs) {
-    const { happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount } = calculateChartDatasets(logs);
-    const doughnutDataset = [
-        {
-            label: 'moods',
-            backgroundColor: [
-                getMoodColors('happy').main, 
-                getMoodColors('sad').main, 
-                getMoodColors('angry').main, 
-                getMoodColors('anxious').main, 
-                getMoodColors('calm').main, 
-                getMoodColors('tired').main, 
-            ],
-            borderWidth: 0.4,
-            borderColor: '#767676',
-            data: [happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount]
-        }
-    ];
+function getLogsPerDateCutoff(logs, timespan) {
+    // to do - handle in Dashboard class
+    let dateCutoff;
 
-    return doughnutDataset;
+    if (timespan === "week"){
+        dateCutoff = moment().subtract(7,'d').format('MM-DD-YYYY');
+    }
+    else if (timespan === "month"){
+        dateCutoff = moment().subtract(1,'M').format('MM-DD-YYYY');
+    }
+    else {
+        return logs.filter(log => log.start.isBefore(moment()));
+    }
+    return logs.filter(log => log.start.isAfter(dateCutoff) && log.start.isBefore(moment()));
 }
 
-export function createCharts(logs){
+function getChartDatasets(logs, timespan) {
+    
+    const { happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount } = calculateChartDatasets(logs);
     const doughnutLabels = ['happy', 'sad', 'angry', 'anxious', 'calm', 'tired'];
-    const dataset = getChartDatasets(logs);
-    const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    const relevantLogs = getLogsPerDateCutoff(logs, timespan);
+    const lineLabels = relevantLogs.map(log => {
+        return (log.start.format("MMM Do"))
+    })
+    const lineData = relevantLogs.map(log => {
+        return (log.sleepHours)
+    })
+    
+    const doughnutDataset = 
+    {
+        labels: doughnutLabels,
+        datasets: [
+            {
+                height:"300",
+                options:{
+                    title:{
+                        display:true,
+                        text:'Moods',
+                        fontSize:15
+                    },
+                    legend:{
+                        display:false,
+                    }
+                },
+                label: 'moods',
+                backgroundColor: [
+                    getMoodColors('happy').main, 
+                    getMoodColors('sad').main, 
+                    getMoodColors('angry').main, 
+                    getMoodColors('anxious').main, 
+                    getMoodColors('calm').main, 
+                    getMoodColors('tired').main, 
+                ],
+                borderWidth: 0.4,
+                borderColor: '#767676',
+                data: [happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount]
+            }
+        ]   
+    }
+
+    const lineDataset = {
+        labels: lineLabels,
         datasets: [
           {
-            label: 'My First dataset',
-            fill: false,
+            label: 'sleep hours',
+            fill: true,
             lineTension: 0.1,
             backgroundColor: 'rgba(75,192,192,0.4)',
             borderColor: 'rgba(75,192,192,1)',
@@ -61,30 +97,25 @@ export function createCharts(logs){
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40]
+            data: lineData
           }
         ]
       };
+
+    return { doughnutDataset, lineDataset };
+}
+
+export function createCharts(logs, timespan){
+    const datasets = getChartDatasets(logs, timespan);
+    
     return (
         <div className="dashboard__charts">
             <Doughnut
-                data={{
-                    labels: doughnutLabels,
-                    datasets: dataset
-                }}
-                height={300}
-                options={{
-                    title:{
-                    display:true,
-                    text:'Moods',
-                    fontSize:15
-                    },
-                    legend:{
-                    display:false,
-                    }
-                }}
+                data={datasets.doughnutDataset}
             />
-            <Line data={data}/>
+            <Line 
+                data={datasets.lineDataset}
+            />
         </div>
     );
 }

@@ -11,7 +11,7 @@ export default class Dashboard extends Component {
     constructor(props){
         super(props);
         this.state={
-            timespan: "month", //or week or all time
+            timespan: "month", // week, month or all
         }
     }
 
@@ -60,7 +60,7 @@ export default class Dashboard extends Component {
                         )
                     })}
                 </div>
-                {createCharts(logs)}
+                {createCharts(logs, this.state.timespan)}
             </div>
         )
     }
