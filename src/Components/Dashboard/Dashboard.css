@@ -1,13 +1,12 @@
-.dashboard__row1 {
+.dashboard .dashboard__row1 {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: space-evenly;
+    justify-content: space-evenly;
 }
 
 .dashboard__featureSection {
     display: inline-block;
-    margin: 2vh 3vw;
+    margin: 4vh 3vw;
+    color: #a5a5a5;
 }
 
 .dashboard__featureContent {
@@ -33,9 +32,6 @@
 .dashboard__charts canvas {
     margin: 2.5vw;
 }
-
-
-
 
 @media only screen and (min-width: 600px) {
     .dashboard__charts canvas {
