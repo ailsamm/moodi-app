@@ -15,94 +15,104 @@ function calculateChartDatasets(logs) {
     return moods;
 }
 
-function getLogsPerDateCutoff(logs, timespan) {
-    // to do - handle in Dashboard class
-    let dateCutoff;
-
-    if (timespan === "week"){
-        dateCutoff = moment().subtract(7,'d').format('MM-DD-YYYY');
-    }
-    else if (timespan === "month"){
-        dateCutoff = moment().subtract(1,'M').format('MM-DD-YYYY');
-    }
-    else {
-        return logs.filter(log => log.start.isBefore(moment()));
-    }
-    return logs.filter(log => log.start.isAfter(dateCutoff) && log.start.isBefore(moment()));
-}
-
 function getChartDatasets(logs, timespan) {
     
     const { happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount } = calculateChartDatasets(logs);
     const doughnutLabels = ['happy', 'sad', 'angry', 'anxious', 'calm', 'tired'];
-    const relevantLogs = getLogsPerDateCutoff(logs, timespan);
-    const lineLabels = relevantLogs.map(log => {
+    const lineLabels = logs.map(log => {
         return (log.start.format("MMM Do"))
     })
-    const lineData = relevantLogs.map(log => {
+    const lineData = logs.map(log => {
         return (log.sleepHours)
     })
     
-    const doughnutDataset = 
-    {
-        labels: doughnutLabels,
-        datasets: [
+    return {
+        doughnutDataset: 
             {
-                height:"300",
-                options:{
-                    title:{
-                        display:true,
-                        text:'Moods',
-                        fontSize:15
+            labels: doughnutLabels,
+            datasets: [
+                {
+                    height:"300",
+                    options:{
+                        title:{
+                            display:true,
+                            text:'Moods',   
+                            fontSize:15
+                        },
+                        legend:{
+                            display:true,
+                            position: "right"
+                        }
                     },
-                    legend:{
-                        display:false,
+                    label: 'moods',
+                    backgroundColor: [
+                        getMoodColors('happy').main, 
+                        getMoodColors('sad').main, 
+                        getMoodColors('angry').main, 
+                        getMoodColors('anxious').main, 
+                        getMoodColors('calm').main, 
+                        getMoodColors('tired').main, 
+                    ],
+                    borderWidth: 0.3,
+                    borderColor: '#767676',
+                    data: [happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount]
+                }
+            ]   
+        },
+        doughnutOptions: {
+            animation: {
+            duration: 2600,
+            easing: 'easeOutCubic'
+            },
+            cutoutPercentage: 70,
+            legend: {
+            labels: {
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 12,
+            },
+            position: 'right'
+            },
+            rotation: Math.PI * Math.random()
+        },
+        lineDataset: {
+            labels: lineLabels,
+            datasets: [
+                {
+                    label: 'sleep hours',
+                    fill: false,
+                    borderColor: getMoodColors('calm').main, 
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: 'rgba(75,192,192,1)',
+                    pointBackgroundColor: getMoodColors('calm').main, 
+                    pointBorderWidth: 4,
+                    pointHoverRadius: 7,
+                    pointHoverBackgroundColor: '#FFF',
+                    pointHoverBorderColor: '#808080', 
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: lineData,
+                    lineTension: 0.2
+                }
+            ]
+        },
+        lineOptions: {
+            animation: {
+                duration: 2600,
+                easing: 'easeOutCubic'
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false
                     }
-                },
-                label: 'moods',
-                backgroundColor: [
-                    getMoodColors('happy').main, 
-                    getMoodColors('sad').main, 
-                    getMoodColors('angry').main, 
-                    getMoodColors('anxious').main, 
-                    getMoodColors('calm').main, 
-                    getMoodColors('tired').main, 
-                ],
-                borderWidth: 0.4,
-                borderColor: '#767676',
-                data: [happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount]
+                }]           
             }
-        ]   
+        }
     }
-
-    const lineDataset = {
-        labels: lineLabels,
-        datasets: [
-          {
-            label: 'sleep hours',
-            fill: true,
-            lineTension: 0.1,
-            backgroundColor: 'rgba(75,192,192,0.4)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: lineData
-          }
-        ]
-      };
-
-    return { doughnutDataset, lineDataset };
 }
 
 export function createCharts(logs, timespan){
@@ -112,9 +122,11 @@ export function createCharts(logs, timespan){
         <div className="dashboard__charts">
             <Doughnut
                 data={datasets.doughnutDataset}
+                options={datasets.doughnutOptions}
             />
             <Line 
                 data={datasets.lineDataset}
+                options={datasets.lineOptions}
             />
         </div>
     );

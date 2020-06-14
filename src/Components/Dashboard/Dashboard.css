@@ -23,3 +23,27 @@
 .dashboard__featureContent > svg {
     font-size: 3em;
 }
+
+.dashboard__charts {
+    padding: 2vh 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard__charts canvas {
+    margin: 2.5vw;
+}
+
+
+
+
+@media only screen and (min-width: 600px) {
+    .dashboard__charts canvas {
+        max-width: 45vw;
+        width: 45vw;
+    }
+
+    .dashboard__charts {
+        flex-direction: row;
+    }
+}

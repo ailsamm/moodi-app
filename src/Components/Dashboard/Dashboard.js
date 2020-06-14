@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MoodiContext from '../../MoodiContext';
 import { getIcon } from '../../Helper';
 import { createCharts } from '../../Helpers/datasetHelper';
+import moment from 'moment';
 import './Dashboard.css';
 
 export default class Dashboard extends Component {
@@ -11,7 +12,7 @@ export default class Dashboard extends Component {
     constructor(props){
         super(props);
         this.state={
-            timespan: "month", // week, month or all
+            timespan: "all", // week, month or all
         }
     }
 
@@ -21,19 +22,30 @@ export default class Dashboard extends Component {
     }
 
     filterLogs = () => {
-        // fetches all of user's logs
-        let logs = []
+        // fetches all of user's logs and filters by the selected timespan
+        const timespan = this.state.timespan;
+        let logs = [];
+        let dateCutoff;
         if (this.context.moodLogs) {
             logs = this.context.moodLogs.filter(log => log.user_id === this.context.loggedInUser);
-        }        
-        // add logic for filtering over timespan
-        return logs;
+
+            if (timespan === "week"){
+                dateCutoff = moment().subtract(7,'d').format('MM-DD-YYYY');
+            }
+            else if (timespan === "month"){
+                dateCutoff = moment().subtract(1,'M').format('MM-DD-YYYY');
+            }
+            else {
+                return logs.filter(log => log.start.isBefore(moment()));
+            }
+            return logs.filter(log => log.start.isAfter(dateCutoff) && log.start.isBefore(moment()));
+        }
+        else return logs;
     }
 
     calculateAverageSleep = (logs) => {
         const average = logs.reduce( ( sum , cur ) => sum + cur.sleepHours , 0) / logs.length;
-        const rounded = Math.round(average * 10) / 10
-        return rounded;
+        return Math.round(average * 10) / 10
     }
 
     render() {
