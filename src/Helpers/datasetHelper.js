@@ -1,7 +1,6 @@
 import React from 'react';
 import { getMoodColors } from '../Helper';
-import { Doughnut, Line } from 'react-chartjs-2';
-import moment from 'moment';
+import { Doughnut, Line, Bar } from 'react-chartjs-2';
 
 function calculateChartDatasets(logs) {
     let moods = {
@@ -15,8 +14,44 @@ function calculateChartDatasets(logs) {
     return moods;
 }
 
-function getChartDatasets(logs, timespan) {
+function getBarData(logs){
+    let activities = [];
+    let moods = [];
+    let moodCounts = {
+        happy: [],
+        sad: [],
+        angry: [],
+        anxious: [],
+        calm: [],
+        tired: []
+    }
+
+    logs.forEach(log => {
+        if (!moods.includes(log.mood)) moods.push(log.mood);
+        log.activities.forEach(activity => {
+            if (!activities.includes(activity)) activities.push(activity);
+        })
+    })
+
+    moods.forEach(mood => {
+        let activityCounts = [];
+        let moodObj = {};
+        activities.forEach((activity,i) => {
+            moodObj[`${activity}`] = 0;
+            logs.forEach(log => {
+                if (log.mood === mood && log.activities.includes(activity)){
+                    moodObj[`${activity}`] += 1;
+                }
+            })
+            activityCounts[i] = moodObj[`${activity}`];
+        })
+        moodCounts[`${mood}`] = activityCounts;
+    })
     
+    return { activities, moods, moodCounts };
+}
+
+function getChartDatasets(logs) {
     const { happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount } = calculateChartDatasets(logs);
     const doughnutLabels = ['happy', 'sad', 'angry', 'anxious', 'calm', 'tired'];
     const lineLabels = logs.map(log => {
@@ -25,6 +60,7 @@ function getChartDatasets(logs, timespan) {
     const lineData = logs.map(log => {
         return (log.sleepHours)
     })
+    const barData = getBarData(logs);
     
     return {
         doughnutDataset: 
@@ -111,23 +147,78 @@ function getChartDatasets(logs, timespan) {
                     }
                 }]           
             }
-        }
+        },
+        barDataset: {
+            labels: barData.activities,
+            datasets: [
+                {
+                    stack: "stack1",
+                    label: 'happy',
+                    backgroundColor: getMoodColors('happy').main,
+                    data: barData.moodCounts.happy
+                },
+                {
+                    stack: "stack1",
+                    label: 'sad',
+                    backgroundColor: getMoodColors('sad').main,
+                    data: barData.moodCounts.sad
+                },
+                {
+                    stack: "stack1",
+                    label: 'angry',
+                    backgroundColor: getMoodColors('angry').main,
+                    data: barData.moodCounts.angry
+                },
+                {
+                    stack: "stack1",
+                    label: 'anxious',
+                    backgroundColor: getMoodColors('anxious').main,
+                    data: barData.moodCounts.anxious 
+                },
+                {
+                    stack: "stack1",
+                    label: 'calm',
+                    backgroundColor: getMoodColors('calm').main,
+                    data: barData.moodCounts.calm
+                },
+                {
+                    stack: "stack1",
+                    label: 'tired',
+                    backgroundColor: getMoodColors('tired').main,
+                    data: barData.moodCounts.tired 
+                }
+            ]
+        },
+        barOptions: {
+            legend: {
+                display:true,
+                position: "right"
+            }
+        },
     }
 }
 
-export function createCharts(logs, timespan){
-    const datasets = getChartDatasets(logs, timespan);
+export function createCharts(logs){
+    const datasets = getChartDatasets(logs);
     
     return (
         <div className="dashboard__charts">
-            <Doughnut
-                data={datasets.doughnutDataset}
-                options={datasets.doughnutOptions}
-            />
-            <Line 
-                data={datasets.lineDataset}
-                options={datasets.lineOptions}
-            />
+            <div className="dashboard__row2">
+                <Doughnut
+                    data={datasets.doughnutDataset}
+                    options={datasets.doughnutOptions}
+                />
+                <Line 
+                    data={datasets.lineDataset}
+                    options={datasets.lineOptions}
+                />
+            </div>
+            <div className="dashboard__row3">
+                <Bar  
+                    data={datasets.barDataset} 
+                    options={datasets.barOptions}
+                />
+            </div>
         </div>
     );
 }
