@@ -187,12 +187,37 @@ function getChartDatasets(logs) {
                     backgroundColor: getMoodColors('tired').main,
                     data: barData.moodCounts.tired 
                 }
-            ]
+            ],
         },
         barOptions: {
             legend: {
                 display:true,
-                position: "right"
+                position: "right",
+            },
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "activities",
+                        fontSize: "16"
+                    },
+                    gridLines: {
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "instances of moods",
+                        fontSize: "16"
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        userCallback: function(label) {
+                            if (Math.floor(label) === label) return label;
+                        },
+                    }
+                }],
             }
         },
     }
