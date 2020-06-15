@@ -54,7 +54,7 @@ export default class Dashboard extends Component {
         const sleepHours = this.calculateAverageSleep(logs);
         const dashboardFeatures = [
             {title: "TOTAL LOGS", content: logs.length, icon: "calendar"},
-            {title: "AVERAGE SLEEP TIME", content: sleepHours, icon: "moon"},
+            {title: "AVERAGE SLEEP TIME", content: `${sleepHours} hours`, icon: "moon"},
             {title: "CURRENT RANKING", content: userRank, icon: "beam"},
         ]
         return (

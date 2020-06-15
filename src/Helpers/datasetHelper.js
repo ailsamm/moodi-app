@@ -89,7 +89,7 @@ function getChartDatasets(logs) {
                         getMoodColors('calm').main, 
                         getMoodColors('tired').main, 
                     ],
-                    borderWidth: 0.3,
+                    borderWidth: 0.2,
                     borderColor: '#767676',
                     data: [happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount]
                 }
@@ -97,16 +97,16 @@ function getChartDatasets(logs) {
         },
         doughnutOptions: {
             animation: {
-            duration: 2600,
-            easing: 'easeOutCubic'
+                duration: 2600,
+                easing: 'easeOutCubic'
             },
             cutoutPercentage: 70,
             legend: {
-            labels: {
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: 12,
-            },
-            position: 'right'
+                labels: {
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: 12,
+                },
+                position: 'right'
             },
             rotation: Math.PI * Math.random()
         },
@@ -155,37 +155,49 @@ function getChartDatasets(logs) {
                     stack: "stack1",
                     label: 'happy',
                     backgroundColor: getMoodColors('happy').main,
-                    data: barData.moodCounts.happy
+                    data: barData.moodCounts.happy,
+                    borderWidth: 0.2,
+                    borderColor: '#767676',
                 },
                 {
                     stack: "stack1",
                     label: 'sad',
                     backgroundColor: getMoodColors('sad').main,
-                    data: barData.moodCounts.sad
+                    data: barData.moodCounts.sad,
+                    borderWidth: 0.2,
+                    borderColor: '#767676',
                 },
                 {
                     stack: "stack1",
                     label: 'angry',
                     backgroundColor: getMoodColors('angry').main,
-                    data: barData.moodCounts.angry
+                    data: barData.moodCounts.angry,
+                    borderWidth: 0.2,
+                    borderColor: '#767676',
                 },
                 {
                     stack: "stack1",
                     label: 'anxious',
                     backgroundColor: getMoodColors('anxious').main,
-                    data: barData.moodCounts.anxious 
+                    data: barData.moodCounts.anxious,
+                    borderWidth: 0.2,
+                    borderColor: '#767676',
                 },
                 {
                     stack: "stack1",
                     label: 'calm',
                     backgroundColor: getMoodColors('calm').main,
-                    data: barData.moodCounts.calm
+                    data: barData.moodCounts.calm,
+                    borderWidth: 0.2,
+                    borderColor: '#767676',
                 },
                 {
                     stack: "stack1",
                     label: 'tired',
                     backgroundColor: getMoodColors('tired').main,
-                    data: barData.moodCounts.tired 
+                    data: barData.moodCounts.tired,
+                    borderWidth: 0.2,
+                    borderColor: '#767676',
                 }
             ],
         },
@@ -193,6 +205,10 @@ function getChartDatasets(logs) {
             legend: {
                 display:true,
                 position: "right",
+                labels: {
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: 12,
+                },
             },
             scales: {
                 xAxes: [{
