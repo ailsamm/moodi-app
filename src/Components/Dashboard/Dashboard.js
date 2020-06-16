@@ -48,6 +48,23 @@ export default class Dashboard extends Component {
         return Math.round(average * 10) / 10
     }
 
+    renderTimespanButtons = () => {
+        const buttons = ["week", "month", "all"];
+        return (
+            <div className="dashboard__timespanButtonsContainer">
+                <h4>See logs from:</h4>
+                <div className="dashboard__timespanButtons">
+                {buttons.map(button => {
+                    const className = this.state.timespan === button ? "dashboard__timespanButton active" : "dashboard__timespanButton";
+                    return (
+                        <button className={className} onClick={() => this.setState({timespan:button})}>{button}</button>
+                    )
+                })}
+                </div>
+            </div>
+        )
+    }
+
     render() {
         const logs = this.filterLogs();
         const userRank = this.getUserRank();
@@ -59,6 +76,7 @@ export default class Dashboard extends Component {
         ]
         return (
             <div className="dashboard">
+                {this.renderTimespanButtons()}
                 <div className="dashboard__row1">
                     {dashboardFeatures.map(feature => {
                         return (

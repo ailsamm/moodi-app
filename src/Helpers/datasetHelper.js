@@ -202,6 +202,10 @@ function getChartDatasets(logs) {
             ],
         },
         barOptions: {
+            animation: {
+                duration: 2000,
+                easing: 'easeOutCubic'
+            },
             legend: {
                 display:true,
                 position: "right",
@@ -224,7 +228,7 @@ function getChartDatasets(logs) {
                 yAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: "instances of moods",
+                        labelString: "mood instances",
                         fontSize: "16"
                     },
                     ticks: {
