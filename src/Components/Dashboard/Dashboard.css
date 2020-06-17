@@ -20,6 +20,7 @@
 .dashboard__noLogsMessage {
     text-align: center;
     margin-top: 5vh;
+    color: #9d9d9d;
 }
 
 .dashboard__featureContent > .dashboard__featureTitle {

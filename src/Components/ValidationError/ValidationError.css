@@ -1,5 +1,6 @@
 .validationError {
+    text-align: center;
+    font-size: 1.25em;
+    margin-top: 1vh;
     color: red;
-    font-size: 0.75em;
-    max-width: 35vw;
 }

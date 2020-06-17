@@ -5,6 +5,7 @@ import { getIcon } from '../../Helper';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import MoodiContext from '../../MoodiContext';
+import ValidationError from '../ValidationError/ValidationError';
 import moment from 'moment';
 import config from '../../config';
 import './AddMoodLog.css';
@@ -37,7 +38,8 @@ export default class AddMoodLog extends Component {
                 bath: false,
                 sun: false,
                 relax: false
-            }
+            },
+            validationError: null
         }
     }
 
@@ -107,7 +109,7 @@ export default class AddMoodLog extends Component {
             .catch(e => console.log(e));   
         }
         else {
-            console.log("please select a mood");
+            this.setState({validationError: "Please select a mood."})
         }
     }
 
@@ -221,6 +223,7 @@ export default class AddMoodLog extends Component {
                         </div>
                     </div>
                 </div>
+                {this.state.validationError && <ValidationError message={this.state.validationError}/>}
                 <button type="submit" className="button addMoodLog__saveButton">save</button>
             </form>
         )
