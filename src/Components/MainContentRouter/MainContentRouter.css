@@ -1,12 +1,12 @@
 .mainContent {
     margin-top: 15vh;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 @media only screen and (min-width: 400px) {
     .mainContent {
-        margin-top: 12vh;
+        margin-top: 11vh;
     }
 }
