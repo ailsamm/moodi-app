@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import MainContentRouter from '../MainContentRouter/MainContentRouter';
 import MoodiContext from '../../MoodiContext';
-import STORE from '../../STORE';
+import { fetchData } from '../../requestHandler';
 import './App.css';
 
 export default class App extends Component {
@@ -16,11 +16,14 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            ...this.state,
-            users: STORE.users,
-            moodLogs: STORE.mood_logs
-        })
+        fetchData()
+            .then(([users, moodLogs]) => {
+                this.setState({
+                    users,
+                    moodLogs
+                })
+            })  
+            .catch(e => console.log(e));
     }
 
     addMoodLog = (newLog) => {

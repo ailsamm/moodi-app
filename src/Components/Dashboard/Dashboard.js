@@ -18,7 +18,7 @@ export default class Dashboard extends Component {
 
     getUserRank = () => {
         const user = this.context.users.find(user => user.id === this.context.loggedInUser);
-        return !!user ? user.rank : "Basic";
+        return !!user ? user.ranking : "Basic";
     }
 
     filterLogs = () => {
@@ -36,15 +36,15 @@ export default class Dashboard extends Component {
                 dateCutoff = moment().subtract(1,'M').format('MM-DD-YYYY');
             }
             else {
-                return logs.filter(log => log.start.isBefore(moment()));
+                return logs.filter(log => moment(log.start_date, 'MM-DD-YYYY').isBefore(moment()));
             }
-            return logs.filter(log => log.start.isAfter(dateCutoff) && log.start.isBefore(moment()));
+            return logs.filter(log => moment(log.start_date, 'MM-DD-YYYY').isAfter(dateCutoff) && moment(log.start_date, 'MM-DD-YYYY').isBefore(moment()));
         }
         else return logs;
     }
 
     calculateAverageSleep = (logs) => {
-        const average = logs.reduce( ( sum , cur ) => sum + cur.sleepHours , 0) / logs.length;
+        const average = logs.reduce( ( sum , cur ) => sum + cur.sleep_hours , 0) / logs.length;
         return Math.round(average * 10) / 10
     }
 
@@ -57,7 +57,7 @@ export default class Dashboard extends Component {
                 {buttons.map(button => {
                     const className = this.state.timespan === button ? "dashboard__timespanButton active" : "dashboard__timespanButton";
                     return (
-                        <button className={className} onClick={() => this.setState({timespan:button})}>{button}</button>
+                        <button key={button} className={className} onClick={() => this.setState({timespan:button})}>{button}</button>
                     )
                 })}
                 </div>

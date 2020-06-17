@@ -21,7 +21,7 @@ export default class CalendarComp extends Component {
             selectedLog: {
                 start: moment(),
                 end: moment(),
-                mood: "angry",
+                mood: "happy",
                 activities: [],
                 title: "\xA0",
                 id: 100,
@@ -47,7 +47,11 @@ export default class CalendarComp extends Component {
     getEvents(){
         const moodLogs = this.context.moodLogs || [];
         const userMoodLogs = moodLogs.filter(mood => mood.user_id === this.context.loggedInUser);
-        userMoodLogs.forEach(log => log.title = getIcon(log.mood));
+        userMoodLogs.forEach(log => {
+            log.title = getIcon(log.mood);
+            log.start = moment(log.start_date, "MM-DD-YYYY");
+            log.end = moment(log.end_date, "MM-DD-YYYY");
+        });
         return userMoodLogs;
     }
 

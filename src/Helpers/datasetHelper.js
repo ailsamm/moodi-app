@@ -1,6 +1,7 @@
 import React from 'react';
 import { getMoodColors } from '../Helper';
 import { Doughnut, Line, Bar } from 'react-chartjs-2';
+import moment from 'moment';
 
 function calculateChartDatasets(logs) {
     let moods = {
@@ -28,7 +29,8 @@ function getBarData(logs){
 
     logs.forEach(log => {
         if (!moods.includes(log.mood)) moods.push(log.mood);
-        log.activities.forEach(activity => {
+        const logActivities = log.activities.split(',');
+        logActivities.forEach(activity => {
             if (!activities.includes(activity)) activities.push(activity);
         })
     })
@@ -47,7 +49,6 @@ function getBarData(logs){
         })
         moodCounts[`${mood}`] = activityCounts;
     })
-    
     return { activities, moods, moodCounts };
 }
 
@@ -55,10 +56,10 @@ function getChartDatasets(logs) {
     const { happyCount, sadCount, angryCount, anxiousCount, calmCount, tiredCount } = calculateChartDatasets(logs);
     const doughnutLabels = ['happy', 'sad', 'angry', 'anxious', 'calm', 'tired'];
     const lineLabels = logs.map(log => {
-        return (log.start.format("MMM Do"))
+        return (moment(log.start_date, 'MM-DD-YYYY').format("MMM Do"))
     })
     const lineData = logs.map(log => {
-        return (log.sleepHours)
+        return (log.sleep_hours)
     })
     const barData = getBarData(logs);
     
