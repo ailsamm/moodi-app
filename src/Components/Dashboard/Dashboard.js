@@ -52,7 +52,7 @@ export default class Dashboard extends Component {
         const buttons = ["week", "month", "all"];
         return (
             <div className="dashboard__timespanButtonsContainer">
-                <h4>See logs from:</h4>
+                <h4>Timespan:</h4>
                 <div className="dashboard__timespanButtons">
                 {buttons.map(button => {
                     const className = this.state.timespan === button ? "dashboard__timespanButton active" : "dashboard__timespanButton";
@@ -65,8 +65,16 @@ export default class Dashboard extends Component {
         )
     }
 
-    render() {
-        const logs = this.filterLogs();
+    renderNoLogsMessage() {
+        return (
+            <div className="dashboard__noLogsMessage">
+                <h2>Sorry - no logs to show for the selected timespan. {getIcon("sad")}</h2>
+                <h3>Please select a different timespan or enter some logs.</h3>
+            </div>
+        )
+    }
+
+    renderDashboardStats(logs) {
         const userRank = this.getUserRank();
         const sleepHours = this.calculateAverageSleep(logs);
         const dashboardFeatures = [
@@ -75,8 +83,7 @@ export default class Dashboard extends Component {
             {title: "CURRENT RANKING", content: userRank, icon: "beam"},
         ]
         return (
-            <div className="dashboard">
-                {this.renderTimespanButtons()}
+            <div>
                 <div className="dashboard__row1">
                     {dashboardFeatures.map(feature => {
                         return (
@@ -91,6 +98,17 @@ export default class Dashboard extends Component {
                     })}
                 </div>
                 {createCharts(logs, this.state.timespan)}
+            </div>
+        )
+    }
+
+    render() {
+        const logs = this.filterLogs();
+        
+        return (
+            <div className="dashboard">
+                {this.renderTimespanButtons()}
+                {logs.length > 0 ? this.renderDashboardStats(logs) : this.renderNoLogsMessage()}
             </div>
         )
     }

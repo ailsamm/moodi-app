@@ -17,6 +17,11 @@
     text-align: center;
 }
 
+.dashboard__noLogsMessage {
+    text-align: center;
+    margin-top: 5vh;
+}
+
 .dashboard__featureContent > .dashboard__featureTitle {
     font-size: 2em;
 }
