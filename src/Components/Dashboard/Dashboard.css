@@ -33,6 +33,10 @@
     align-items: center;
 }
 
+.dashboard__row3 canvas {
+    height: auto;
+}
+
 .dashboard__charts canvas {
     margin: 2.5vw;
 }

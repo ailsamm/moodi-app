@@ -6,6 +6,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import MoodiContext from '../../MoodiContext';
 import moment from 'moment';
+import config from '../../config';
 import './AddMoodLog.css';
 
 export default class AddMoodLog extends Component {
@@ -73,18 +74,37 @@ export default class AddMoodLog extends Component {
             }, []);
 
             const newLog = {
-                id: 99, // TO DO: make dynamic
                 user_id: this.context.loggedInUser,
                 mood: this.state.selectedMood,
+                start_date: this.state.date.format("MM-DD-YYYY").toString(),
+                end_date: this.state.date.format("MM-DD-YYYY").toString(),
                 start: this.state.date.toDate(),
                 end: this.state.date.toDate(),
                 title: "\xA0",
+                sleep_hours: this.state.sleepHours,
                 notes: this.state.notes,
-                activities
+                activities: activities.join(",")
             }
 
-            this.context.onAddMoodLog(newLog);
-            this.props.history.push("/journal");
+            fetch(`${config.serverUrl}/mood-logs/`, {
+                method: 'POST',
+                body: JSON.stringify(newLog),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then(moodLogRes => {
+                if (!moodLogRes.ok) {
+                    throw new Error('An error occurred while attempting to add new mood log');
+                }
+                return moodLogRes.json()
+            })
+            .then(moodLogJson => {
+                newLog.id = moodLogJson.id
+                this.context.onAddMoodLog(newLog);
+                this.props.history.push("/journal");
+            })
+            .catch(e => console.log(e));   
         }
         else {
             console.log("please select a mood");

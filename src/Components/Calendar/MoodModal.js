@@ -66,7 +66,7 @@ export default function MoodModal(props) {
     const body = (
         <div style={modalStyle} className={classes.main}>
             <h2 id="simple-modal-title" className={classes.title}>{props.moodLog.start.format('MMMM Do YYYY')} <button onClick={props.handleDelete} className={classes.trash}>{getIcon("trash")}</button></h2>
-            {props.moodLog.activities.length > 0 && <div className={`${classes.container} ${classes.activities}`}>{props.moodLog.activities.map(activity => (
+            {props.moodLog.activities.length > 0 && <div className={`${classes.container} ${classes.activities}`}>{props.moodLog.activities.split(",").map(activity => (
                 getIcon(activity)
             ))}
             </div>}

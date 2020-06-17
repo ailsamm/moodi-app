@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import MainContentRouter from '../MainContentRouter/MainContentRouter';
 import MoodiContext from '../../MoodiContext';
-import { fetchData } from '../../requestHandler';
+import { fetchData, deleteMoodLogInDb } from '../../requestHandler';
 import './App.css';
 
 export default class App extends Component {
@@ -32,6 +32,7 @@ export default class App extends Component {
     }
 
     deleteMoodLog = (logId) => {
+        deleteMoodLogInDb(logId);
         const moodLogs = this.state.moodLogs.filter(moodLog => moodLog.id !== logId);
         this.setState({ moodLogs})
     }

@@ -24,25 +24,25 @@ export function fetchData(){
 }
 
 // Handles patch request for updating task in server DB 
-/*export function updateTaskInDb(taskId, taskFields) {
-    fetch(`${config.serverUrl}/tasks/${taskId}`, {
+export function updateTaskInDb(logId, fields) {
+    fetch(`${config.serverUrl}/mood-logs/${logId}`, {
       method: 'PATCH',
-      body: JSON.stringify(taskFields),
+      body: JSON.stringify(fields),
       headers: {
         'content-type': 'application/json'
       },
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error('An error occurred while attempting to update the task');
+        throw new Error('An error occurred while attempting to update the mood log');
       }
     })
     .catch(e => console.log(e));
 }
 
 // Handles delete request for removing task from server DB 
-export function deleteTaskInDb(taskId) {
-    fetch(`${config.serverUrl}/tasks/${taskId}`, {
+export function deleteMoodLogInDb(logId) {
+    fetch(`${config.serverUrl}/mood-logs/${logId}`, {
         method: 'DELETE',
       })
       .then(response => {
@@ -53,50 +53,19 @@ export function deleteTaskInDb(taskId) {
       .catch(e => console.log(e));
 }
 
-// Carries out post request for adding user info to server DB then immediately handles posting of user login info
-export function addNewUser(userInfo, userLogin) {
-        fetch(`${config.serverUrl}/users-info/`, {
-            method: 'POST',
-            body: JSON.stringify(userInfo),
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-        .then(usersInfoRes => {
-            if (!usersInfoRes.ok) {
-                throw new Error('An error occurred while attempting to add new user info');
-            }
-            fetch(`${config.serverUrl}/users-login/`, {
-                method: 'POST',
-                body: JSON.stringify(userLogin),
-                headers: {
-                    'content-type': 'application/json'
-                },
-            })
-            .then(usersLoginRes => {
-                if (!usersLoginRes.ok) {
-                    throw new Error('An error occurred while attempting to add new user login');
-                }
-            })
-            .catch(e => console.log(e));
-        })
-        .catch(e => console.log(e));   
-}
-
-// Handles patch request for updating user info in server DB 
-export function updateUserInfoInDb(userId, userInfoFields){
-    fetch(`${config.serverUrl}/users-info/${userId}`, {
+// Handles patch request for updating user  in server DB 
+export function updateUserInfoInDb(userId, fields){
+    fetch(`${config.serverUrl}/users/${userId}`, {
         method: 'PATCH',
-        body: JSON.stringify(userInfoFields),
+        body: JSON.stringify(fields),
         headers: {
             'content-type': 'application/json'
         },
     })
     .then(userInfoRes => {
         if (!userInfoRes.ok) {
-          throw new Error('An error occurred while attempting to update user info');
+          throw new Error('An error occurred while attempting to update user');
         }
     })
     .catch(e => console.log(e));
-}*/
-
+}
