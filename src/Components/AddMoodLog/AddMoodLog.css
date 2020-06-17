@@ -63,6 +63,7 @@
 
 .addMoodLog__section__details {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
@@ -77,6 +78,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5vh;
 }
 
 .addMoodLog__datePickerContainer > div {
@@ -191,6 +193,16 @@
     
     .addMoodLog__activity > svg {
         font-size: 1.75em;
+    }
+}
+
+@media only screen and (min-width: 550px) {
+    .addMoodLog__section__details {
+        flex-direction: row;
+    }
+
+    .addMoodLog__sleepDateContainer {
+        margin-top: 0;
     }
 }
 
