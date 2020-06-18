@@ -37,13 +37,19 @@ export default class App extends Component {
         this.setState({ moodLogs})
     }
 
+    handleSignOut = () => {
+        console.log("I'm here!");
+        this.setState({loggedInUser: null})
+    }
+
     render(){
         const contextValue = {
             loggedInUser: this.state.loggedInUser,
             users: this.state.users,
             moodLogs: this.state.moodLogs,
             onAddMoodLog: this.addMoodLog,
-            onDeleteMoodLog: this.deleteMoodLog
+            onDeleteMoodLog: this.deleteMoodLog,
+            onSignOut: this.handleSignOut
         }
 
         return (

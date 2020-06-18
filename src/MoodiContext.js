@@ -5,7 +5,8 @@ const MoodiContext = React.createContext({
   users: [],
   moodLogs: [],
   onAddMoodLog: () => {},
-  onDeleteMoodLog: () => {}
+  onDeleteMoodLog: () => {},
+  onSignOut: () => {}
 });
 
 export default MoodiContext;

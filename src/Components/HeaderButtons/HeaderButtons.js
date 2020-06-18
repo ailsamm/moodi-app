@@ -9,7 +9,8 @@ export default class HeaderButtons extends Component {
     static contextType = MoodiContext;
 
     getButtons = () => {
-        if (this.context.loggedInUser) {
+        console.log(this.context.loggedInUser)
+        if (this.context.loggedInUser != null) {
             return [
                 {name: "dashboard", icon: "chart", to: "/dashboard"},
                 {name: "journal", icon: "calendar", to: "/journal"},
