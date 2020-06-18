@@ -115,7 +115,7 @@ export default class AddMoodLog extends Component {
 
     renderActivities() {
         const activityProps = [
-            {name: "Exercising", valueName:"exercise"},
+            {name: "Exercise", valueName:"exercise"},
             {name: "Family", valueName:"family"},
             {name: "Friends", valueName:"friends"},
             {name: "Healthy eating", valueName:"eat"},
