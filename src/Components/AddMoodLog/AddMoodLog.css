@@ -186,6 +186,18 @@
     color: white;
 }
 
+.addMoodLog .MuiFormLabel-root.Mui-focused {
+    color: var(--main-accent-color);
+}
+
+.addMoodLog .MuiFormControl-root {
+    background-color: #f5f5f5;
+}
+
+.addMoodLog .MuiFilledInput-underline:after {
+    border-bottom-color: var(--main-accent-color);
+}
+
 @media only screen and (min-width: 450px) {
     .addMoodLog__moodButton > svg {
         font-size: 1.75em;
