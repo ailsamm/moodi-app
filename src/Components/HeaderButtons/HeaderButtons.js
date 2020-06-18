@@ -13,7 +13,8 @@ export default class HeaderButtons extends Component {
             return [
                 {name: "dashboard", icon: "chart", to: "/dashboard"},
                 {name: "journal", icon: "calendar", to: "/journal"},
-                {name: "new log", icon: "pencil", to: "/add"}
+                {name: "new log", icon: "pencil", to: "/add"},
+                {name: "profile", icon: "user", to: "/profile"},
             ]
         }
         else {

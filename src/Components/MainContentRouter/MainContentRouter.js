@@ -6,6 +6,7 @@ import LogInPage from '../LogInPage/LogInPage';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import Journal from '../Journal/Journal';
 import Dashboard from '../Dashboard/Dashboard';
+import Profile from '../Profile/Profile';
 //import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import './MainContentRouter.css'
@@ -39,6 +40,12 @@ export default class MainContentRouter extends Component {
                         key='journal'
                         path='/journal' 
                         component={Journal}
+                    />
+                    <Route 
+                        exact 
+                        key='profile'
+                        path='/profile' 
+                        component={Profile}
                     />
                     <Route 
                         exact 
