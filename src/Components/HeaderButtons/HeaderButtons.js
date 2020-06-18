@@ -35,8 +35,8 @@ export default class HeaderButtons extends Component {
                             onClick={this.handleSelectButton}
                             key={button.name}>
                                 <div className="headerButtons__button">
-                                    {getIcon(button.icon)}&nbsp;
-                                    <span className="headerButtons__buttonName">{button.name}</span>
+                                    {getIcon(button.icon)}
+                                    <span className="headerButtons__buttonName">&nbsp;{button.name}</span>
                                 </div>
                         </NavLink>
                     )

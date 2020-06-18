@@ -2,7 +2,6 @@
 
 .headerButtons {
     display: flex;
-    flex-direction: column;
     justify-self: flex-end;
     margin-left: auto;
     margin-top: 1vh;
@@ -25,7 +24,7 @@
 .headerButtons > a {
     border: 1px solid var(--main-text-color);
     border-radius: 50%;
-    padding: 0.5rem 0.6rem;
+    padding: 0.5rem 0.65rem;
     margin: auto 1vw;
 }
 
@@ -35,12 +34,6 @@
 
 .headerButtons > a.active {
     border: 1px solid var(--main-accent-color);
-}
-
-@media only screen and (min-width: 400px) {
-    .headerButtons {
-        flex-direction: row;
-    }
 }
 
 @media only screen and (min-width: 650px) {
