@@ -53,6 +53,28 @@ export function deleteMoodLogInDb(logId) {
       .catch(e => console.log(e));
 }
 
+export async function addLogInDb(newLog){
+    let response = await fetch(`${config.serverUrl}/mood-logs/`, {
+        method: 'POST',
+        body: JSON.stringify(newLog),
+        headers: {
+            'content-type': 'application/json'
+        }
+    });
+    return await response.json()
+}
+
+export async function addUserInDb(newUser){
+    let response = await fetch(`${config.serverUrl}/users/`, {
+        method: 'POST',
+        body: JSON.stringify(newUser),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+    return await response.json()
+}
+
 // Handles patch request for updating user  in server DB 
 export function updateUserInfoInDb(userId, fields){
     fetch(`${config.serverUrl}/users/${userId}`, {

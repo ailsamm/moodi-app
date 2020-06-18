@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MoodiContext from '../../MoodiContext';
 import { validateEmail, notNull, validatePassword, validateRepeatPassword } from '../../Helpers/validationHelper';
 import ValidationError from '../ValidationError/ValidationError';
-import config from '../../config';
+import { addUserInDb } from '../../requestHandler';
 import './SignUpPage.css';
 
 export default class SignUpPage extends Component {
@@ -63,25 +63,13 @@ export default class SignUpPage extends Component {
                 password: this.state.password.value,
             };
 
-            fetch(`${config.serverUrl}/users/`, {
-                method: 'POST',
-                body: JSON.stringify(newUser),
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
-            .then(userRes => {
-                if (!userRes.ok) {
-                    throw new Error('An error occurred while attempting to add new user');
-                }
-                return userRes.json()
-            })
-            .then(userJson => {
-                newUser.id = userJson.id
-                this.context.onSignUp(newUser);
-                this.props.history.push("/journal");
-            })
-            .catch(e => console.log(e));   
+            addUserInDb(newUser)
+                .then(user => {
+                    newUser.id = user.id
+                    this.context.onSignUp(newUser);
+                    this.props.history.push("/journal");
+                })
+                .catch(e => console.log(e));   
         }
         // ensures that the user has passed all validation measures
         else {

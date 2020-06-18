@@ -7,7 +7,7 @@ import 'react-dates/initialize';
 import MoodiContext from '../../MoodiContext';
 import ValidationError from '../ValidationError/ValidationError';
 import moment from 'moment';
-import config from '../../config';
+import { addLogInDb } from '../../requestHandler';
 import './AddMoodLog.css';
 
 export default class AddMoodLog extends Component {
@@ -88,25 +88,13 @@ export default class AddMoodLog extends Component {
                 activities: activities.join(",")
             }
 
-            fetch(`${config.serverUrl}/mood-logs/`, {
-                method: 'POST',
-                body: JSON.stringify(newLog),
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
-            .then(moodLogRes => {
-                if (!moodLogRes.ok) {
-                    throw new Error('An error occurred while attempting to add new mood log');
-                }
-                return moodLogRes.json()
-            })
-            .then(moodLogJson => {
-                newLog.id = moodLogJson.id
-                this.context.onAddMoodLog(newLog);
-                this.props.history.push("/journal");
-            })
-            .catch(e => console.log(e));   
+            addLogInDb(newLog)
+                .then(moodLog => {
+                    newLog.id = moodLog.id
+                    this.context.onAddMoodLog(newLog);
+                    this.props.history.push("/journal");
+                })
+                .catch(e => console.log(e));
         }
         else {
             this.setState({validationError: "Please select a mood."})
