@@ -29,15 +29,15 @@ export default class LogInPage extends Component {
 
     handleLogInAttempt = (e) => {
         e.preventDefault();
-        /*const context = this.context;
+        const context = this.context;
         const formIsValid = this.state.email.isValid &&
             this.state.password.isValid;
 
         if (formIsValid) {
-            const user = context.usersLogin.find(user => user.email_address === this.state.email.value);
-            if (user){
+            const user = context.users.find(user => user.email === this.state.email.value);
+            if (user) {
                 if (user.password === this.state.password.value){
-                    context.onLogInUser(user);
+                    context.onLogIn(user.id);
                     this.props.history.push("/dashboard");
                     return;
                 }
@@ -63,7 +63,7 @@ export default class LogInPage extends Component {
                 ...this.state,
                 failedLogInError: "Please fix the errors in red before proceeding."
             })
-        }*/
+        }
     }
 
     // updates email address state on field change

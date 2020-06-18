@@ -38,8 +38,11 @@ export default class App extends Component {
     }
 
     handleSignOut = () => {
-        console.log("I'm here!");
         this.setState({loggedInUser: null})
+    }
+
+    handleLogIn = (userId) => {
+        this.setState({loggedInUser: userId})
     }
 
     render(){
@@ -49,7 +52,8 @@ export default class App extends Component {
             moodLogs: this.state.moodLogs,
             onAddMoodLog: this.addMoodLog,
             onDeleteMoodLog: this.deleteMoodLog,
-            onSignOut: this.handleSignOut
+            onSignOut: this.handleSignOut,
+            onLogIn: this.handleLogIn
         }
 
         return (
