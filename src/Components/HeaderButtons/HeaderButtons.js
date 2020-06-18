@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MoodiContext from '../../MoodiContext';
 import { NavLink } from 'react-router-dom';
-import { getIcon } from '../../Helper';
+import { getIcon } from '../../Helpers/moodColorHelper';
 import './HeaderButtons.css';
 
 export default class HeaderButtons extends Component {

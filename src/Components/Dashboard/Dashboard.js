@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MoodiContext from '../../MoodiContext';
-import { getIcon } from '../../Helper';
+import { getIcon } from '../../Helpers/moodColorHelper';
 import { createCharts } from '../../Helpers/datasetHelper';
 import moment from 'moment';
 import './Dashboard.css';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { getMoodColors, getIcon } from '../../Helper';
+import { getMoodColors, getIcon } from '../../Helpers/moodColorHelper';
 import Modal from '@material-ui/core/Modal';
 
 function getModalStyle() {

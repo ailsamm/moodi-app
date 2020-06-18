@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextField, Slider } from '@material-ui/core';
 import { SingleDatePicker } from 'react-dates';
-import { getIcon } from '../../Helper';
+import { getIcon } from '../../Helpers/moodColorHelper';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import MoodiContext from '../../MoodiContext';

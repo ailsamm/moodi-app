@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMoodColors } from '../Helper';
+import { getMoodColors } from '../Helpers/moodColorHelper';
 import { Doughnut, Line, Bar } from 'react-chartjs-2';
 import moment from 'moment';
 

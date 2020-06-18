@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MoodiContext from '../../MoodiContext';
-import { validateEmail, notNull, validatePassword, validateRepeatPassword } from '../../ValidationHelper';
+import { validateEmail, notNull, validatePassword, validateRepeatPassword } from '../../Helpers/validationHelper';
 import ValidationError from '../ValidationError/ValidationError';
 import './SignUpPage.css';
 

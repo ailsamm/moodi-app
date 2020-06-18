@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Calendar from '../Calendar/Calendar';
 import { getWellnessTip } from '../../Helpers/wellnessTips';
-import { getIcon } from '../../Helper';
+import { getIcon } from '../../Helpers/moodColorHelper';
 import './Journal.css';
 
 

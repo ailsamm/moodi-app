@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ValidationError from '../ValidationError/ValidationError';
 import MoodiContext from '../../MoodiContext';
-import { validateEmail, notNull } from '../../ValidationHelper';
+import { validateEmail, notNull } from '../../Helpers/validationHelper';
 import './LogInPage.css';
 
 export default class LogInPage extends Component {

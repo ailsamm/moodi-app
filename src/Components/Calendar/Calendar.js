@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import MoodiContext from '../../MoodiContext';
 import moment from 'moment';
 import MoodModal from './MoodModal';
-import { getMoodColors, getIcon } from '../../Helper';
+import { getMoodColors, getIcon } from '../../Helpers/moodColorHelper';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import './Calendar.css';
 
