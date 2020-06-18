@@ -39,7 +39,7 @@
 /* Background animation */
 .background {
     background: #c4eee5;  
-    background: -webkit-linear-gradient(to left, #5fc4ae, #4e54c8);  
+    background: -webkit-linear-gradient(to left, #5fc4ae, #ecedff);  
     width: 100%;
     height:100vh;
 }
