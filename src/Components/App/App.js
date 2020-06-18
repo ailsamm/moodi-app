@@ -41,6 +41,14 @@ export default class App extends Component {
         this.setState({loggedInUser: null})
     }
 
+    handleSignUp = (user) => {
+        const newUsers = [...this.state.users, user]
+        this.setState({
+            users: newUsers,
+            loggedInUser: user.id
+        })
+    }
+
     handleLogIn = (userId) => {
         this.setState({loggedInUser: userId})
     }
@@ -53,7 +61,8 @@ export default class App extends Component {
             onAddMoodLog: this.addMoodLog,
             onDeleteMoodLog: this.deleteMoodLog,
             onSignOut: this.handleSignOut,
-            onLogIn: this.handleLogIn
+            onLogIn: this.handleLogIn,
+            onSignUp: this.handleSignUp
         }
 
         return (
