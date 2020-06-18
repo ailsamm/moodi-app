@@ -14,7 +14,7 @@ export default class LandingPage extends Component {
                     </Bounce>
                     <p className="landingPage__description">your best friend in mood tracking</p>
                     <NavLink to="/signup" className="button landingPage__learnMorebutton">sign up</NavLink>
-                <ul class="circles">
+                <ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>
