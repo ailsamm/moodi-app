@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MoodiContext from '../../MoodiContext';
 import { validateEmail, notNull, validatePassword, validateRepeatPassword } from '../../Helpers/validationHelper';
 import ValidationError from '../ValidationError/ValidationError';
+import config from '../../config';
 import './SignUpPage.css';
 
 export default class SignUpPage extends Component {
@@ -48,30 +49,39 @@ export default class SignUpPage extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         // checks that all fields have passed validation measures
-        /* const formIsValid = this.state.firstName.isValid &&
+        const formIsValid = this.state.firstName.isValid &&
             this.state.lastName.isValid &&
             this.state.email.isValid &&
-            this.state.jobTitle.isValid &&
             this.state.password.isValid &&
             this.state.repeatPassword.isValid;
 
         if (formIsValid) {
-            const id = createRandomId();
-            // two user objects required since each is being sent to a separate DB table
-            const newUserLogIn = {
-                user_id: id,
-                email_address: this.state.email.value.toLowerCase(),
-                password: this.state.password.value,
-            };
-            const newUserInfo = {
-                id,
+            const newUser = {
                 first_name: this.titleCase(this.state.firstName.value),
                 last_name: this.titleCase(this.state.lastName.value),
-                job_title: this.state.jobTitle.value,
-                team_id: 1
+                email: this.state.email.value,
+                password: this.state.password.value,
             };
-            this.context.onSignUpUser(newUserLogIn, newUserInfo);
-            this.props.history.push("/dashboard);
+
+            fetch(`${config.serverUrl}/users/`, {
+                method: 'POST',
+                body: JSON.stringify(newUser),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then(userRes => {
+                if (!userRes.ok) {
+                    throw new Error('An error occurred while attempting to add new user');
+                }
+                return userRes.json()
+            })
+            .then(userJson => {
+                newUser.id = userJson.id
+                this.context.onSignUp(newUser);
+                this.props.history.push("/journal");
+            })
+            .catch(e => console.log(e));   
         }
         // ensures that the user has passed all validation measures
         else {
@@ -79,7 +89,7 @@ export default class SignUpPage extends Component {
                 ...this.state,
                 failedSignUpError: "Please fix the errors in red before proceeding."
             });
-        } */
+        }
     }
 
     titleCase(s) {
