@@ -51,7 +51,9 @@ body {
 .centeredForm {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
+    margin-top: 25vh;
 }
 
 form > button {
@@ -76,4 +78,17 @@ form > input {
     border-top: 0;
     border-left: 0;
     border-right: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    form > label {
+        font-family: 'Ubuntu', sans-serif;
+        margin-top: 2vh;
+        width: 30vw;
+        font-size: 0.9em;
+    }
+
+    form > input {
+        width: 30vw;
+    }
 }
