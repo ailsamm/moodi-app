@@ -7,18 +7,23 @@
 .journal__topBar {
     background: #ebebeb;
     border-radius: 10px;
-    height: 10vh;
+    height: auto;
     width: 90vw;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.journal_tipOfTheDay {
+.journal__topBar svg {
+    font-size: 2em;
+    color: var(--main-accent-color);
+}
+
+.journal_wellnessTip {
     width: 80%;
 }
 
-.journal_tipOfTheDay__intro {
+.journal_wellnessTip__intro {
     font-variant: small-caps;
     font-size: 1.25em;
     color: var(--main-accent-color);

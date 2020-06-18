@@ -10,10 +10,10 @@ export default class Journal extends Component {
         return (
             <div className="journal">
                 <div className="journal__topBar">
-                    { getIcon("info")}
-                    <div className="journal_tipOfTheDay">
+                    {getIcon("info")}
+                    <div className="journal_wellnessTip">
                         <p>
-                            <span className="journal_tipOfTheDay__intro bold-font">wellness tip: </span>
+                            <span className="journal_wellnessTip__intro bold-font">wellness tip: </span>
                             {getWellnessTip()} 
                         </p>
                     </div>
