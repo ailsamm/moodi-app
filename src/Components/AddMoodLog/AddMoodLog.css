@@ -83,7 +83,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 2vh;
 }
 
 .addMoodLog__datePickerContainer > div {
@@ -217,6 +217,14 @@
     }
 }
 
+@media only screen and (min-width: 400px) {
+    .addMoodLog__sleepDateContainer {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
 @media only screen and (min-width: 550px) {
     .addMoodLog__section__details {
         flex-direction: row;
@@ -227,13 +235,21 @@
     }
 
     .addMoodLog__section textarea {
-        max-width: 60vw;
+        max-width: 50vw;
+    }
+
+    .addMoodLog__sleepDateContainer {
+        flex-direction: column;
     }
 }
 
 @media only screen and (min-width: 650px) {
     .addMoodLog__moodButton > svg {
         font-size: 2em;
+    }
+
+    .addMoodLog__section textarea {
+        max-width: 60vw;
     }
     
     .addMoodLog__activity > svg {

@@ -123,13 +123,13 @@ export default class AddMoodLog extends Component {
             {name: "Drink water", valueName:"water"},
             {name: "Outdoors", valueName:"outdoors"},
             {name: "Reading", valueName:"read"},
-            {name: "Cleaning", valueName:"clean"},
+            {name: "Clean", valueName:"clean"},
             {name: "TV / Movies", valueName:"movies"},
-            {name: "Laughing", valueName:"laugh"},
+            {name: "Laugh", valueName:"laugh"},
             {name: "Music", valueName:"music"},
             {name: "Bath", valueName:"bath"},
             {name: "Sun", valueName:"sun"},
-            {name: "Relaxing", valueName:"relax"}
+            {name: "Relax", valueName:"relax"}
         ];
 
         return (
