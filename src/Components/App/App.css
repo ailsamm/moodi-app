@@ -53,7 +53,10 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100%;
-    margin-top: 25vh;
+}
+
+.form {
+    font-size: 1.25em;
 }
 
 form > button {
@@ -81,6 +84,11 @@ form > input {
 }
 
 @media only screen and (min-width: 600px) {
+    form {
+        font-size: 1.5em;
+    }
+
+
     form > label {
         font-family: 'Ubuntu', sans-serif;
         margin-top: 2vh;
