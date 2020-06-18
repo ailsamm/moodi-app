@@ -9,7 +9,7 @@ export default class LandingPage extends Component {
         return (
             <div className="landingPage centered background">
                     <p className="landingPage__meet">welcome to</p>
-                    <Bounce>
+                    <Bounce top>
                         <h1 className="landingPage__title">moodi</h1>
                     </Bounce>
                     <p className="landingPage__description">your best friend in mood tracking</p>
