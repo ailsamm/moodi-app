@@ -21,12 +21,14 @@ export default class Profile extends Component {
                                 <h3><span className="profile__key">name:</span> {user.first_name} {user.last_name}</h3>
                                 <h3><span className="profile__key">email:</span>{user.email}</h3>
                                 <h3><span className="profile__key">about:</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel ipsum nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec laoreet nisi. Sed finibus leo ut tempor aliquam. Duis lacinia libero in lectus malesuada, vel venenatis nulla porta. Integer cursus euismod leo, sed bibendum odio feugiat vel. Nam a eros tristique, commodo odio nec, eleifend nisl. Duis volutpat tellus eu dictum dapibus. Donec id purus nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas bibendum bibendum tristique.</h3>
+                                <div className="profile__buttonContainer">
                                 <NavLink 
                                     to="/" 
                                     className="button profile__button" 
                                     onClick={context.onSignOut}>
                                         sign out
                                 </NavLink>
+                                </div>
                             </div>
                         </div>
                     )

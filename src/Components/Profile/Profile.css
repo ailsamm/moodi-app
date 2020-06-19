@@ -15,12 +15,12 @@
     font-weight: 500;
 }
 
-.profile__userInfo > .profile__button {
-    margin-top: 2vh;
-}
-
 .profile__key, .profile__location {
     color: var(--main-accent-color);
+}
+
+.profile__buttonContainer {
+    margin-top: 5vh;
 }
 
 .profile .profile__userInfo {
