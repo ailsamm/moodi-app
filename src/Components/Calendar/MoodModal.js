@@ -75,7 +75,7 @@ export default function MoodModal(props) {
             </h2>
             {props.moodLog.activities.length > 0 && <div className={`${classes.container} ${classes.activities}`}>{props.moodLog.activities.split(",").map(activity => (
                 <Tooltip title={activity} arrow>
-                    <div className="aaa">{getIcon(activity)}</div>
+                    <div className="modal__activity">{getIcon(activity)}</div>
                 </Tooltip>
             ))}
             </div>}

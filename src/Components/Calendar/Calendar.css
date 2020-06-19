@@ -15,11 +15,11 @@
     color: #FFF;
 }
 
-.aaa {
-    border-radius: 50%;
+.modal__activity {
+    border-radius: 20%;
     padding: 0.3vh 0.7vw;
 }
 
-.aaa:hover {
+.modal__activity:hover {
     background: #f9f9f9;
 }
