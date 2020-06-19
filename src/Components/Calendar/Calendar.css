@@ -14,3 +14,12 @@
 .rbc-event-content > svg {
     color: #FFF;
 }
+
+.aaa {
+    border-radius: 50%;
+    padding: 0.3vh 0.7vw;
+}
+
+.aaa:hover {
+    background: #f9f9f9;
+}

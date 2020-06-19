@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { getMoodColors, getIcon } from '../../Helpers/moodColorHelper';
-import Modal from '@material-ui/core/Modal';
+import { Modal, Tooltip } from '@material-ui/core/';
 
 function getModalStyle() {
   const top = 50;
@@ -65,13 +65,22 @@ export default function MoodModal(props) {
 
     const body = (
         <div style={modalStyle} className={classes.main}>
-            <h2 id="simple-modal-title" className={classes.title}>{props.moodLog.start.format('MMMM Do YYYY')} <button onClick={props.handleDelete} className={classes.trash}>{getIcon("trash")}</button></h2>
+            <h2 id="simple-modal-title" className={classes.title}>
+                {props.moodLog.start.format('MMMM Do YYYY')} 
+                <Tooltip arrow placement="top" title="delete">
+                    <button onClick={props.handleDelete} alt="delete" className={classes.trash}>
+                        {getIcon("trash")}
+                    </button>
+                </Tooltip>
+            </h2>
             {props.moodLog.activities.length > 0 && <div className={`${classes.container} ${classes.activities}`}>{props.moodLog.activities.split(",").map(activity => (
-                getIcon(activity)
+                <Tooltip title={activity} arrow>
+                    <div className="aaa">{getIcon(activity)}</div>
+                </Tooltip>
             ))}
             </div>}
             <div className={`${classes.container} ${classes.sleep}`}>
-                {getIcon("sleep")}<span className={classes.sleepHours}>&nbsp;{props.moodLog.sleepHours} hours</span>
+                {getIcon("sleep")}<span className={classes.sleepHours}>&nbsp;{props.moodLog.sleep_hours} hours</span>
             </div>
             <p id="simple-modal-description">
                 {props.moodLog.notes}

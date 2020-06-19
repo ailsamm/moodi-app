@@ -170,5 +170,5 @@ export function getIcon(name) {
             iconName = faSmile;
     }
 
-    return <FontAwesomeIcon key={name} alt="name" icon={iconName}/>;
+    return <FontAwesomeIcon key={name} alt={name} icon={iconName}/>;
 }
