@@ -36,11 +36,24 @@ export default class LandingPage extends Component {
                         <li></li>
                     </ul>
                 </section>
-
                 <section className="landingPage__about" id="about">
-                    <h2>What is Moodi?</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis dui scelerisque, convallis dolor at, sollicitudin ligula. Duis sodales leo ut sollicitudin varius. Fusce sollicitudin mi purus. Suspendisse magna ligula, ultricies ac dictum non, feugiat eget neque. Aliquam congue libero vitae purus placerat aliquet. In eget libero ultricies, vulputate ipsum non, interdum ex. Donec vitae elit sed urna convallis posuere. Nulla sit amet tincidunt augue. Maecenas sit amet viverra mauris, a pulvinar lectus.
-                    Duis sit amet consectetur libero, vitae faucibus dolor. Nunc et ante quis est pretium feugiat a at justo. Phasellus ac lacus mauris. Aliquam erat volutpat. Mauris gravida mattis urna, a eleifend ante pretium ac. Pellentesque sit amet cursus tellus. Vestibulum elementum, mi iaculis euismod iaculis, lectus massa efficitur eros, eu dignissim ex est ac lectus. Nam maximus, purus sit amet accumsan consequat, lacus ipsum suscipit erat, eu bibendum est ex quis neque. Fusce sagittis massa in gravida elementum. Mauris varius tristique nulla et gravida. In hac habitasse platea dictumst. Aliquam lorem metus, elementum sed scelerisque eu, eleifend at justo. Donec pulvinar dui libero, ac sodales augue posuere ac. In mollis tortor et convallis rutrum. Suspendisse tristique bibendum augue, a pellentesque mauris efficitur vel.</p>
+                    <section>
+                        <h2>What is Moodi?</h2>
+                        <p>Moodi is a versatile app that takes the effort out of keeping a mood journal all while allowing you to track your mood and the different factors that lead to your ups and downs.</p>
+                    </section>
+                    <section>
+                        <h2>How can Moodi help me?</h2>
+                        <ul>
+                            <li>&nbsp;<span className="bold">Quickly</span> take note of how you felt during a particular day</li>
+                            <li>&nbsp;No need to write anything if you don't want to - our <span className="bold">quick-tap buttons</span> will help you out</li>
+                            <li>&nbsp;Look through your very own <span className="bold">journal of mood logs</span> for your own complete history</li>
+                            <li>&nbsp;Take a peek at your <span className="bold">personalized dashboard</span> to see stats and figures from your recent moods</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Who is Moodi for?</h2>
+                        <p>In short - everyone! Whether you're struggling with depression, or simply want to a way of logging your life, Moodi is a valuable tool for tracking your mood patterns.</p>
+                    </section>
                 </section>
             </div>
         );

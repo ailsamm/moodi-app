@@ -10,7 +10,33 @@
 .landingPage__about {
     margin-top: 45vh;
     font-size: 0.75em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.landingPage__about > section {
+    margin: 1vh 0;
+}
+
+.landingPage__about > section > ul, .landingPage__about > section > p {
+    background: #ffffff79;
+    border-radius: 10px;
+    padding: 4vh 2vw;
+    text-align: left;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+.landingPage__about > section > ul {
+    text-align: left;
+    list-style-type: "\2B95 ";
+    margin-top: 0;
+}
+
 
 .landingPage__intro {
     margin-top: 25vh;
@@ -50,7 +76,7 @@
     background: #c4eee5;  
     background: -webkit-linear-gradient(to left, #e3fff9, #c4eee5);  
     width: 100%;
-    height:200vh;
+    height:300vh;
 }
 
 .circles{
@@ -153,8 +179,6 @@
     animation-duration: 11s;
 }
 
-
-
 @keyframes animate {
 
     0%{
@@ -173,5 +197,10 @@
         opacity: 0;
         border-radius: 50%;
     }
+}
 
+@media only screen and (min-width: 650px) {
+    .landingPage__about > * {
+        width: 60vw;
+    }
 }
