@@ -26,14 +26,26 @@ Moodi is written with ReactJS, Javascript, HTML5, CSS3.
 ## Usage
 See the following screenshots for an overview of how Moodi can be used.
 
+
+Landing page
 ![landing page](./public/images/landingPage.png)
 
+
+Dashboard - User stats
 ![dashboard 1](./public/images/dashboard1.png)
 
+
+Dashboard - User stats with activity correlations
 ![dashboard 2](./public/images/dashboard2.png)
 
+
+User's personalized journal with mood history
 ![journal](./public/images/journal.png)
 
+
+Modal with information on individual mood log
 ![journal - mood modal](./public/images/modal.png)
 
+
+Interface to log a new mood
 ![add new mood](./public/images/addMood.png)
