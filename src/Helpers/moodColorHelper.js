@@ -1,4 +1,4 @@
-import { faSadTear, faMapMarkerAlt, faSmileBeam, faCloudMoon, faChartPie, faInfoCircle, faCalendarAlt, faPlusCircle, faBed, faUser, faPencilAlt, faTrashAlt, faAngry, faLaughBeam, faTv, faBalanceScale, faSun, faHandSparkles, faHeart, faGrimace, faPeopleArrows, faBath, faSmile, faTired, faRunning, faMusic, faUsers, faUtensils, faGrinSquintTears, faBook, faLeaf, faTint } from '@fortawesome/free-solid-svg-icons';
+import { faSadTear, faUserPlus, faMapMarkerAlt, faSignInAlt, faSmileBeam, faCloudMoon, faChartPie, faInfoCircle, faCalendarAlt, faPlusCircle, faBed, faUser, faPencilAlt, faTrashAlt, faAngry, faLaughBeam, faTv, faBalanceScale, faSun, faHandSparkles, faHeart, faGrimace, faPeopleArrows, faBath, faSmile, faTired, faRunning, faMusic, faUsers, faUtensils, faGrinSquintTears, faBook, faLeaf, faTint } from '@fortawesome/free-solid-svg-icons';
 import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
@@ -164,6 +164,14 @@ export function getIcon(name) {
 
         case "beam":
             iconName = faSmileBeam;
+        break;
+
+        case "addUser":
+            iconName = faUserPlus;
+        break;
+
+        case "signIn":
+            iconName = faSignInAlt;
         break;
 
         default: 

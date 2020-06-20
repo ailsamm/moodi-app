@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MoodiContext from '../../MoodiContext';
 import { NavLink } from 'react-router-dom';
 import { getIcon } from '../../Helpers/moodColorHelper';
+import { Tooltip } from '@material-ui/core/';
 import './HeaderButtons.css';
 
 export default class HeaderButtons extends Component {
@@ -19,8 +20,8 @@ export default class HeaderButtons extends Component {
         }
         else {
             return [
-                {name: "sign up", icon: "pencil", to: "/signup"},
-                {name: "log in", icon: "user", to: "/login"}
+                {name: "sign up", icon: "addUser", to: "/signup"},
+                {name: "log in", icon: "signIn", to: "/login"}
             ]
         }
     }
@@ -31,15 +32,22 @@ export default class HeaderButtons extends Component {
             <div className="headerButtons">
                 {buttons.map(button => {
                     return (
-                        <NavLink to={button.to} 
-                            id={button.name}
-                            onClick={this.handleSelectButton}
-                            key={button.name}>
-                                <div className="headerButtons__button">
-                                    {getIcon(button.icon)}
-                                    <span className="headerButtons__buttonName">&nbsp;{button.name}</span>
-                                </div>
-                        </NavLink>
+                        <Tooltip 
+                            className="headerButton__tooltip"
+                            arrow 
+                            interactive={true}
+                            placement="bottom" 
+                            key={button.name}
+                            title={button.name}>
+                            <NavLink to={button.to} 
+                                id={button.name}
+                                onClick={this.handleSelectButton}>
+                                    <div className="headerButtons__button">
+                                        {getIcon(button.icon)}
+                                        <span className="headerButtons__buttonName">&nbsp;{button.name}</span>
+                                    </div>
+                            </NavLink>
+                        </Tooltip>
                     )
                 })}
             </div>

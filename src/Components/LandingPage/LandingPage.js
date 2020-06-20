@@ -36,6 +36,7 @@ export default class LandingPage extends Component {
                         <li></li>
                     </ul>
                 </section>
+                
                 <section className="landingPage__about" id="about">
                     <section>
                         <h2>What is Moodi?</h2>
