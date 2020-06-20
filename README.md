@@ -21,10 +21,10 @@ The client is already connected to a remotely deployed server.
 A modifiable version can be found [here](https://github.com/ailsamm/moodi-server) (simply clone, run ```npm i``` and then, in this app, change the URL in the ./src/config.js) or work with the already-deployed version that is specified in ./src/config.js.
 
 ## Tech Stack
-Productify is written with ReactJS, Javascript, HTML5, CSS3.
+Moodi is written with ReactJS, Javascript, HTML5, CSS3.
 
 ## Usage
-See the following screenshots for an overview of how Productify can be used.
+See the following screenshots for an overview of how Moodi can be used.
 
 ![landing page](./public/images/landingPage.png)
 
