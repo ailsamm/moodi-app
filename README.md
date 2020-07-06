@@ -8,6 +8,9 @@ Here are some of the perks:
   - Look through your very own journal of mood logs for your own complete history
   - Take a peek at your personalized dashboard to see stats and figures from your recent moods
 
+## Live Walkthrough
+![live walkthrough](./public/images/moodi.gif)
+
 ## Demo
 
 A demo version is available [here](https://moodi.now.sh/).
